@@ -13,10 +13,10 @@
     
     <item>
       <title>A/B Testing Case Study</title>
-      <link>/project/optimization-analyst-exercise-julian-carrasquillo/</link>
+      <link>/project/ab-test/ab-test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/project/optimization-analyst-exercise-julian-carrasquillo/</guid>
+      <guid>/project/ab-test/ab-test/</guid>
       <description>I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.
 Let me know what you think! Happy Scrolling.
 PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import. For wrangling, I brought in dplyr via the tidyverse package.</description>
