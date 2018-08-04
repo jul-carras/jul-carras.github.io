@@ -1,0 +1,208 @@
+---
+title: "A/B Testing Case Study"
+author: "Julian Carrasquillo"
+output: 
+  html_document:
+    css: style.css
+---
+
+
+I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions. 
+
+
+
+Let me know what you think! Happy Scrolling.
+
+## Packages
+
+All of the data was in an Excel spreadsheet, so I used `readxl` to import. For wrangling, I brought in `dplyr` via the `tidyverse` package. `knitr` and `kableExtra` help for making pretty tables for reports.
+
+```{r setup, echo = TRUE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(readxl)
+library(knitr)
+library(kableExtra)
+
+```
+
+```{r, echo = FALSE}
+version_descriptions <- data.frame("Version" = c("A", "B", "C"), 
+                                   "Description" = c("control, standard content slot (no category links)",
+                                   "smaller horizontal text-based links on a black background, 'shop by category' is displayed across the top",
+                                    "larger vertical text links overlaid on product images in the background"))
+
+metric_descriptions <- data.frame("Key Metric" = c("Visits", "Bounces", "Category_Link_Click_Visits",
+                                               "Product_View_Visit", "Cart_Visit", "Orders", "Revenue"),
+                                  "Definition" = c("the number of visits to the site", 
+                                                   "a visit who leaves the site without interacting with the page", 
+                                                   "a visit who clicks a test category link (men's, women's, women's shoe, men's shoes, women's boots, men's boots)", 
+                                                   "a visit who saw a product page", "a visit who saw the cart page", 
+                                                   "a visit who made a purchase", "sales during the period"))
+
+```
+
+## Background - Presented Hypothesis
+
+> I believe that presenting the user with large category buttons on the mobile homepage will allow users to more easily navigate to product. If I’m right, we’ll see an increase in product views and downstream metrics including order conversion.
+
+We've got data on the control site and 2 variants over a 16 day period. 
+
+```{r, echo = FALSE}
+version_descriptions %>%
+  kable(format = "html") %>%
+  kable_styling()
+```
+
+![](/project/AB-Testing/variant_img.png)
+
+Based on the hypothesis, we can go ahead with an A/B test **comparing the control to variant C**, since it contains larger buttons. The tested metric will be product viewing rate, or 'product site visits' / 'total home page visits'. 
+
+
+Some additional color on the key metrics recorded:
+
+```{r, echo = FALSE}
+metric_descriptions %>%
+  kable(format = "html") %>%
+  kable_styling()
+```
+
+## Formal Hypotheses
+
+
+#### **H~0~**: The product viewing rate is the same for website variants A and C.
+
+#### **H~A~**: The larger buttons in variant C will increase product views.
+
+<br>
+With this background information set, we can go ahead with our workflow.
+<br>
+<br>
+
+### Reading in data, extracting KPIs
+
+Getting a look at the table, we see that most of the columns are numeric. When importing, I factored the version variable. 
+
+```{r stats}
+ab_data <- read_excel("AB_test.xlsx", sheet = "key_metrics") %>%
+  mutate(Version = factor(Version))
+
+ab_data
+```
+
+For calculations, the 2 versions were separated, summed, with key conversion metrics calculated, which is the rate of users who entered the website that ended up somewhere down the purchasing funnel. 
+
+```{r}
+# Calculate total homepage visits, product views, 
+# and conversion rate for control and large button variant.
+control <- ab_data %>%
+  filter(Version == "A") %>%
+  summarize(homepage_visits = sum(Homepage_Visits),
+            product_view_visits = sum(Product_View_Visit),
+            cart_visit = sum(Cart_Visits),
+            orders = sum(Orders)) %>%
+  mutate(prod_rate = product_view_visits / homepage_visits,
+         cart_rate = cart_visit / homepage_visits,
+         order_rate = orders / homepage_visits)
+
+variant <- ab_data %>%
+  filter(Version == "C") %>%
+  summarize(homepage_visits = sum(Homepage_Visits),
+            product_view_visits = sum(Product_View_Visit),
+            cart_visit = sum(Cart_Visits),
+            orders = sum(Orders)) %>%
+  mutate(prod_rate = product_view_visits / homepage_visits,
+         cart_rate = cart_visit / homepage_visits,
+         order_rate = orders / homepage_visits)
+
+```
+
+<br>
+<br>
+
+### Statistic Calculation
+
+The test statistic is the difference between the two conversion rates. Again, we want to see if the change in user experience generated a change in the chance that user makes it to a product page. Note that I have the calculation assignments wrapped in parentheses - doing this assigns your variable *and* prints it! 
+
+```{r}
+(test_stat <- variant$prod_rate - control$prod_rate)
+```
+
+Calculate pooled prop, standard error, z statistic, and p-value. Thanks to [rcuevass](https://github.com/rcuevass/AB_test_script/blob/master/AB-test.R) for the great refresher in the statistics!
+
+```{r}
+(pooled_prop <- (control$product_view_visits + variant$product_view_visits) / 
+  (control$homepage_visits + variant$homepage_visits))
+
+(std_err <- sqrt(pooled_prop*(1 - pooled_prop) *
+                   (1/control$homepage_visits + 1/variant$homepage_visits)))
+
+(z_stat <- test_stat/std_err)
+
+(p_value <- pnorm(z_stat, lower.tail = FALSE))
+```
+
+
+<br>
+<br>
+
+## Conclusions
+
+The larger buttons produced a 370 basis point lift in the product viewing rate. The calculated p-value satisfies a very stringent alpha level, which lines up with a difference this large. **I would recommend adopting the design with large category buttons.**
+
+As for downstream metrics, my initial reaction is to build different tests to move the consumer along the conversion funnel. Said differently, what can we do to get the visitor from the product view page to the Product Description Page or the cart? The effect of the category buttons on the end conversion rate is something I'm interested in: does an experience earlier in the order funnel affect the rates a few steps down into the funnel? 
+
+However, for completeness, see below similarly calculated p-values for the difference in cart viewing and order conversion rates.   
+  
+<br>
+
+**For cart views:**
+
+```{r, echo = FALSE}
+test_stat <- variant$cart_rate - control$cart_rate
+
+pooled_prop <- (control$cart_visit + variant$cart_visit) / 
+  (control$homepage_visits + variant$homepage_visits)
+
+std_err <- sqrt(pooled_prop*(1 - pooled_prop)*(1/control$homepage_visits + 1/variant$homepage_visits))
+
+z_stat <- test_stat/std_err
+
+```
+
+```{r}
+(p_value <- pnorm(z_stat, lower.tail = FALSE))
+```
+  
+  
+**For orders:**
+
+```{r, echo = FALSE}
+test_stat <- variant$order_rate - control$order_rate
+
+pooled_prop <- (control$orders + variant$orders) / 
+  (control$homepage_visits + variant$homepage_visits)
+
+std_err <- sqrt(pooled_prop*(1 - pooled_prop)*(1/control$homepage_visits + 1/variant$homepage_visits))
+
+z_stat <- test_stat/std_err
+```
+
+```{r}
+(p_value <- pnorm(z_stat, lower.tail = FALSE))
+```
+
+These larger p-values imply that any difference between the cart viewing and conversion rates for the control and the variant are most likely due to chance.
+  
+<br>
+
+## More Investigations, based on provided data
+
+* Large buttons vs small buttons by using category click links metric.
+* Dig into which of the buttons performed stronger - maybe men's boots had higher click through - why?
+* Create a test for more specific category links like "Camp", "Run", and "Trail."
+
+<br>
+
+Made using [RStudio](https://www.rstudio.com) & [RMarkdown](https://rmarkdown.rstudio.com/)
