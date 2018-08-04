@@ -1,0 +1,64 @@
+---
+title: "Julian Carrasquillo"
+output: html_document
+---
+
+![](/page/snowy.jpg)
+
+# TECHNICAL SKILLS
+
+### R PROGRAMMING LANGUAGE
+
+  * Tidyverse suite for data importing, wrangling, analysis, and visualization. 
+  * RMarkdown, Shiny, and Flexdashboard for interactive and appealing report generation. 
+  * Growing toolbox in text mining techniques, machine learning methods, API connections, and Git version control.
+
+### STATISTICS
+
+  * Experienced in p-values, hypothesis testing, random sampling, and power analysis.
+  * Passed SOA professional Actuarial exams Probability P/1 and Financial Mathematics FM/2, both of which have historical passing rates less than 40%.
+
+### OTHER
+
+  * Software: Microsoft Office Suite, Omniture; Orderwave; SPS Commerce.
+  * Familiar Programming Languages: Visual Basic for Applications; Python; HTML/CSS.
+  * Avid reader of data science, tech business, and storytelling focused publications.
+
+<br>
+
+# EDUCATION
+
+GRAND VALLEY STATE UNIVERSITY<br>
+<em>2018 – Present</em><br>
+Master of Science in Data Science & Analytics, In Progress<br>
+Grand Rapids, MI<br>
+
+UNIVERSITY OF MICHIGAN<br>
+<em>2008 - 2012</em><br>
+Bachelor of Science in Applied Mathematics, with a minor in German<br>
+Ann Arbor, MI
+
+
+<br>
+
+# EXPERIENCE
+
+WOLVERINE WORLDWIDE | CHACO FOOTWEAR <br>
+Business Analyst II, BW Power User <br>
+2015 - Present <br>
+Rockford, MI
+
+  * Builds interactive dashboards with a focus on quick-look communications.
+  * Automates regular reporting using the R programming language to deliver consistent, brand-styled insights for the national sales force and company-wide brand leads.
+  * Developed and managed a national sales program launch by creating processes, VBA tools, and visual communications, leading to over $80K in incremental revenue for year 1.
+<br>  
+
+WOLVERINE WORLDWIDE | CORPORATE FINANCE                                                                  		       
+International Credit Analyst                                                                                                    
+2014 - 2015
+Rockford, MI
+
+  * Utilized Excel, SAP BW, and VBA to produce and streamline periodic and ad hoc reporting for multiple company groups, internal and third party auditors, and financial services vendors.
+  * Created an automated territory monitor with VBA to showcase credit KPIs.
+  * Coordinated an external vendor with various firm functions and researched Accounts Receivable data for the Voluntary Disclosure Agreement with Delaware, saving over $1MM in liability to the state.
+
