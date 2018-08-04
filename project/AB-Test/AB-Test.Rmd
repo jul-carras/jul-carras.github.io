@@ -53,9 +53,10 @@ We've got data on the control site and 2 variants over a 16 day period.
 version_descriptions %>%
   kable(format = "html") %>%
   kable_styling()
+
+# ![](/project/AB-Testing/variant_img.png)
 ```
 
-![](/project/AB-Testing/variant_img.png)
 
 Based on the hypothesis, we can go ahead with an A/B test **comparing the control to variant C**, since it contains larger buttons. The tested metric will be product viewing rate, or 'product site visits' / 'total home page visits'. 
 
