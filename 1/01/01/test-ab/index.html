@@ -17,7 +17,7 @@ PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import
 Let me know what you think! Happy Scrolling.
 PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import. For wrangling, I brought in dplyr via the tidyverse package.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/project/test-ab/">
+<meta property="og:url" content="/1/01/01/test-ab/">
         <link rel="stylesheet" href="/dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -75,15 +75,15 @@ if (!doNotTrack) {
                     <ul class="site-nav">
                         
     <li class="site-nav-item">
+        <a title="Resume" href="/page/resume">Resume</a>
+    </li>
+
+    <li class="site-nav-item">
         <a title="Blog" href="/post/">Blog</a>
     </li>
 
     <li class="site-nav-item">
         <a title="Projects" href="/project/">Projects</a>
-    </li>
-
-    <li class="site-nav-item">
-        <a title="Resume" href="/page/resume">Resume</a>
     </li>
 
                     </ul>
@@ -94,13 +94,22 @@ if (!doNotTrack) {
 
 
 <div class="container">
-    <article class="post-container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
-    <h1 class="post-title">A/B Testing Case Study</h1>
+    <h1 class="post-title" itemprop="name headline">A/B Testing Case Study</h1>
     
+    <p class="post-date">
+        <span>Published <time datetime="0001-01-01" itemprop="datePublished">Jan 1, 0001</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://twitter.com/juliancarras" itemprop="url" rel="author">Julian Carrasquillo</a>
+            </span>
+        </span>
+    </p>
 </header>
 
-        <div class="post-content clearfix">
+        <div class="post-content clearfix" itemprop="articleBody">
     
 
     <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
@@ -348,7 +357,7 @@ variant &lt;- ab_data %&gt;%
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=A%2fB%20Testing%20Case%20Study&url=%2fproject%2ftest-ab%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=A%2fB%20Testing%20Case%20Study&url=%2f1%2f01%2f01%2ftest-ab%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -359,7 +368,7 @@ variant &lt;- ab_data %&gt;%
 
         
         
-            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=A%2fB%20Testing%20Case%20Study&url=%2fproject%2ftest-ab%2f&summary="
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=A%2fB%20Testing%20Case%20Study&url=%2f1%2f01%2f01%2ftest-ab%2f&summary="
                onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
                <i class="fa fa-linkedin"></i>
                <span class="hidden">LinkedIn</span>
@@ -367,6 +376,12 @@ variant &lt;- ab_data %&gt;%
         
     </div>
 </footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
     </article>
 </div>
 
