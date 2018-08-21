@@ -15,7 +15,7 @@ With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool,
 <meta property="og:description" content="Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
 With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/2018/08/20/dilliards_support/">
+<meta property="og:url" content="/2018/08/20/dillards_support/">
         <link rel="stylesheet" href="/dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -210,7 +210,7 @@ register_google(key = google_api_key)</code></pre>
 <pre class="r"><code>mapped_region &lt;- get_googlemap(center = &quot;united states&quot;, zoom = 4, size = c(640, 400))
 
 ggmap(mapped_region)</code></pre>
-<p><img src="/post/2018-08-17-map/Dilliards_Support_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/2018-08-17-map/Dillards_Support_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Once we have our map, we can retrieve the coordinates to place our points. Disclaimer - I am working on running this more efficiently, but have been running into some hurdles. When running <code>ggmap::geocode</code>, longitude and latitude is returned. The mutate function below runs the queries twice to extract each component. I will update this post with an edit once I figure it out. Advice is welcome!</p>
 <pre class="r"><code>all_stores_with_coord &lt;- all_stores %&gt;%
   mutate(lon = geocode(address, source = &quot;google&quot;)$lon,
@@ -228,7 +228,7 @@ ggmap(mapped_region)</code></pre>
         axis.ticks = element_blank(),
         legend.position = &quot;top&quot;,
         legend.title = element_blank())</code></pre>
-<p><img src="/post/2018-08-17-map/Dilliards_Support_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/post/2018-08-17-map/Dillards_Support_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <ul>
 <li>We can see that Dillard’s has a strong presence in the southern part of the country with some additional, uncontested territory in the Rockies region.</li>
 <li>Store X has more of a hold in the midwest while Store Y is covering the west coast.</li>
@@ -265,7 +265,7 @@ ggmap(mapped_region)</code></pre>
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fdilliards_support%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fdillards_support%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -276,7 +276,7 @@ ggmap(mapped_region)</code></pre>
 
         
         
-            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fdilliards_support%2f&summary="
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fdillards_support%2f&summary="
                onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
                <i class="fa fa-linkedin"></i>
                <span class="hidden">LinkedIn</span>
