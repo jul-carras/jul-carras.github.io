@@ -14,20 +14,10 @@
     
     <item>
       <title>Web Scraping and Mapping</title>
-      <link>/2018/08/20/dillards_support/</link>
+      <link>/2018/08/20/scraping_mapping/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/08/20/dillards_support/</guid>
-      <description>Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
-With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.</description>
-    </item>
-    
-    <item>
-      <title>Web Scraping and Mapping</title>
-      <link>/2018/08/20/dilliards_support/</link>
-      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/08/20/dilliards_support/</guid>
+      <guid>/2018/08/20/scraping_mapping/</guid>
       <description>Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
 With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.</description>
     </item>
