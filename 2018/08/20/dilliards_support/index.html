@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Web Scraping and Mapping &middot; Julian Carrasquillo</title>
+        <meta name="description" content="Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
+With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.45.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Web Scraping and Mapping">
+<meta property="og:description" content="Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
+With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/2018/08/20/dilliards_support/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+    </head>
+    <body>
+        
+<script>
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'XXX', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Julian Carrasquillo" href="/">Julian Carrasquillo</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/juliancarras">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/juliancarrasquillo/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:jul.carras@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/page/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Blog" href="/post/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Resume" href="/page/resume">Resume</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Web Scraping and Mapping</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-08-20" itemprop="datePublished">Aug 20, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://twitter.com/juliancarras" itemprop="url" rel="author">Julian Carrasquillo</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p>Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.</p>
+<p>With guidance from <a href="https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/">this post by Saurav Kaushik</a>, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website. This allows us to target specifically tagged fields on a webpage for the scraper within the <code>rvest</code> package. You can download Selector Gadget and see a quick video on how it works <a href="https://selectorgadget.com/">here</a>. In a nutshell - you click an element of a website and the selector guesses the tag, along with everything else that matches that tag. You correct it by unclicking any elements you are not interested in and the selector will find a new tag that associates what is left over. You continue this process until we’re left with the fields of interest.</p>
+<p><br><br></p>
+<div id="packages" class="section level2">
+<h2>Packages</h2>
+<ul>
+<li>As mentioned above, <code>rvest</code> contains our web scraping functions.</li>
+<li><code>ggmap</code> interfaces with the google API to produce maps that can be layered with data using <code>ggplot</code> from the <code>tidyverse</code> packages.</li>
+<li>The locations of the non-Dillards locations are stored in Excel files, so I’m including <code>readxl</code>.</li>
+</ul>
+<pre class="r"><code>library(rvest)
+library(ggmap)
+library(tidyverse)
+library(readxl)</code></pre>
+<p><br><br></p>
+</div>
+<div id="scraping-dillards-locations" class="section level2">
+<h2>Scraping Dillard’s Locations</h2>
+<p>Luckily for us, <a href="https://www.dillards.com/stores">Dillard’s store locator</a> is SUPER web scraper friendly because all addresses are stored in a single line of text and are all shown on one page!</p>
+<p><img src="/post/2018-08-17-map/dilliards_stores.jpg" /></p>
+<p>Using the Selector Gadget, we’re able to pinpoint which tag is associated with the full addresses. In this case, <strong>.col-md-5 a</strong> is what we’ll focus our scraper on.</p>
+<p><img src="/post/2018-08-17-map/selector_gadget.jpg" /></p>
+<p>So, using <code>read_html</code> with the location of the web page, <code>html_nodes</code> to focus on our tag, and <code>html_text</code> to retrieve the text that sits there, we’re able to scrape all addresses of Dilliard’s Department stores in the US.</p>
+<pre class="r"><code>dillards &lt;- read_html(&quot;https://www.dillards.com/stores&quot;) %&gt;%
+  html_nodes(&quot;.col-md-5 a&quot;) %&gt;%
+  html_text()
+
+# Make into 1 column dataframe with a header
+dillards &lt;- data.frame(&quot;address&quot; = dillards)
+
+# See first 15 entries
+head(dillards, n = 15)</code></pre>
+<pre><code>##                                                  address
+## 1         1627 Opelika Rd Suite 16 Auburn, Alabama 36830
+## 2           3000 Eastdale Mall Montgomery, Alabama 36117
+## 3         900 Commons Dr Suite 100 Dothan, Alabama 36303
+## 4    301 Coxcreek Pkwy Ste #1100 Florence, Alabama 35630
+## 5     2801 Memorial Parkway Sw Huntsville, Alabama 35801
+## 6                3300 Bel Air Mall Mobile, Alabama 36606
+## 7   10101 Eastern Shore Blvd Spanish Fort, Alabama 36527
+## 8       7310 Eastchase Parkway Montgomery, Alabama 36117
+## 9                  700 Quintard Dr Oxford, Alabama 36203
+## 10            1435 West Southern Ave Mesa, Arizona 85202
+## 11       10002 Metro Parkway East Phoenix, Arizona 85051
+## 12      1117 N. Promenade Pky Casa Grande, Arizona 85194
+## 13     4700 Us Highway 89 North Flagstaff, Arizona 86004
+## 14     1461 South Yuma Palms Parkway Yuma, Arizona 85365
+## 15 5501 Highway 95 North Lake Havasu City, Arizona 86404</code></pre>
+<p><br><br></p>
+</div>
+<div id="combining-with-other-data" class="section level2">
+<h2>Combining With Other Data</h2>
+<p>The two other stores’ locations are stored in 2 spreadsheets - one with full addresses in a single line and one with street number, city, state, and postal code in separate fields. After reading these in with <code>readxl</code>, we combine everything using <code>dplyr::bind_rows</code>.</p>
+<pre class="r"><code># Simple case, data in the format we need.
+store_x &lt;- read_excel(&quot;Store X list.xlsx&quot;, 
+                      sheet = &quot;store_list&quot;, 
+                      col_names = c(&quot;address&quot;), 
+                      col_types = c(&quot;text&quot;))
+
+# This spreadsheet needs some processing, combining the columns into a single 
+# column using mutate, then selecting that column.
+store_y &lt;- read_excel(&quot;Store Y list SS2018.xlsx&quot;, sheet = &quot;store_list&quot;) %&gt;%
+  mutate(address = paste(Address, City, State, Zip)) %&gt;%
+  select(address)
+
+# Combine our 3 data sources into one data frame.
+all_stores &lt;- bind_rows(&quot;Dillard&#39;s&quot; = dillards, 
+                        &quot;Store X&quot; = store_x, 
+                        &quot;Store Y&quot; = store_y, 
+                        .id = &quot;retailer&quot;)
+
+head(all_stores, n = 15)</code></pre>
+<pre><code>##     retailer                                               address
+## 1  Dillard&#39;s        1627 Opelika Rd Suite 16 Auburn, Alabama 36830
+## 2  Dillard&#39;s          3000 Eastdale Mall Montgomery, Alabama 36117
+## 3  Dillard&#39;s        900 Commons Dr Suite 100 Dothan, Alabama 36303
+## 4  Dillard&#39;s   301 Coxcreek Pkwy Ste #1100 Florence, Alabama 35630
+## 5  Dillard&#39;s    2801 Memorial Parkway Sw Huntsville, Alabama 35801
+## 6  Dillard&#39;s               3300 Bel Air Mall Mobile, Alabama 36606
+## 7  Dillard&#39;s  10101 Eastern Shore Blvd Spanish Fort, Alabama 36527
+## 8  Dillard&#39;s      7310 Eastchase Parkway Montgomery, Alabama 36117
+## 9  Dillard&#39;s                 700 Quintard Dr Oxford, Alabama 36203
+## 10 Dillard&#39;s            1435 West Southern Ave Mesa, Arizona 85202
+## 11 Dillard&#39;s       10002 Metro Parkway East Phoenix, Arizona 85051
+## 12 Dillard&#39;s      1117 N. Promenade Pky Casa Grande, Arizona 85194
+## 13 Dillard&#39;s     4700 Us Highway 89 North Flagstaff, Arizona 86004
+## 14 Dillard&#39;s     1461 South Yuma Palms Parkway Yuma, Arizona 85365
+## 15 Dillard&#39;s 5501 Highway 95 North Lake Havasu City, Arizona 86404</code></pre>
+<p><br><br></p>
+</div>
+<div id="mapping-our-store-locations" class="section level2">
+<h2>Mapping Our Store Locations</h2>
+<p>Our next phase is to interface with the Google Maps API. Once we build a connection, we can retrieve a map of the US and the coordinates for each element of the address list we constructed above. As of Summer of 2018, Google updated their pricing structure for their <a href="https://cloud.google.com/maps-platform/">Maps API</a>. You can use <a href="https://www.youtube.com/watch?v=9ImLCQBj9SE">this video</a> to guide you through setting up your API. Note you will be prompted to enter billing information, though if your usage is low enough - fewer than 2,500 queries a day - billing will not occur. After that, it’s $.50 / 1000 queries.</p>
+<p>So, we’ll first register our API using <code>ggmap::register_google</code></p>
+<pre class="r"><code>google_api_key &lt;- &quot;your_key_here&quot;
+register_google(key = google_api_key)</code></pre>
+<p>Once we’re connected, we’ll want to grab a map of the US to layer onto. The zoom argument takes integers from 3 (continent) to 21 (a building). By default, a city is shown at level 3. Using <code>ggmap</code>, we can take a look at our new canvas. Note that the x and y axis are replaced with longitude and and latitude, respectively. This is a key because we’ll have coordinates in this form for our store locations!</p>
+<pre class="r"><code>mapped_region &lt;- get_googlemap(center = &quot;united states&quot;, zoom = 4, size = c(640, 400))
+
+ggmap(mapped_region)</code></pre>
+<p><img src="/post/2018-08-17-map/Dilliards_Support_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Once we have our map, we can retrieve the coordinates to place our points. Disclaimer - I am working on running this more efficiently, but have been running into some hurdles. When running <code>ggmap::geocode</code>, longitude and latitude is returned. The mutate function below runs the queries twice to extract each component. I will update this post with an edit once I figure it out. Advice is welcome!</p>
+<pre class="r"><code>all_stores_with_coord &lt;- all_stores %&gt;%
+  mutate(lon = geocode(address, source = &quot;google&quot;)$lon,
+         lat = geocode(address, source = &quot;google&quot;)$lat)</code></pre>
+<p>This portion of code takes some time, depending on how many queries are ran. This becomes cumbersome if you need to rerun the script for updates to your analysis. To streamline, I wrote the dataframe with coordinates to a local .csv file.</p>
+<pre class="r"><code>all_stores_with_coord %&gt;% write_csv(&quot;stores_with_coords.csv&quot;)</code></pre>
+<p>Now, for stand alone analysis, the .csv can be read in and runs much faster.</p>
+<pre class="r"><code>all_stores_with_coord &lt;- read_csv(&quot;stores_with_coords.csv&quot;)</code></pre>
+<p>Now for the finale! <code>ggmap</code> behaves a lot like <code>ggplot</code> when using a ggmap object. In fact, we can layer additonal data with the familiar + functionality. So below, we plot the map, layer on the points corresponding to store locations using a new data source, scale the color of the points manually, then apply some cleaning of the plot by removing axis lines, tick marks, etc.</p>
+<pre class="r"><code>ggmap(mapped_region) +
+  geom_point(aes(x = lon, y = lat, col = retailer), alpha = 0.8, data = all_stores_with_coord) +
+  scale_color_manual(values = c(&quot;blue&quot;, &quot;red&quot;, &quot;goldenrod&quot;)) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = &quot;top&quot;,
+        legend.title = element_blank())</code></pre>
+<p><img src="/post/2018-08-17-map/Dilliards_Support_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<ul>
+<li>We can see that Dillard’s has a strong presence in the southern part of the country with some additional, uncontested territory in the Rockies region.</li>
+<li>Store X has more of a hold in the midwest while Store Y is covering the west coast.</li>
+</ul>
+<p><br><br></p>
+</div>
+<div id="next-steps" class="section level2">
+<h2>Next Steps</h2>
+<p>The above analysis was done by eyeballing the map. We could definitely do better might incorporating a distance metric of some sort to find points of high efficiency, defined by distance from the next closest location. With sales data, we could maybe scale the size of the points to line up with volume of business or even highlight places with low penetration of new product launches.</p>
+</div>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/ggmap/">ggmap</a>, 
+            
+                <a href="/tags/google-maps-api/">google maps API</a>, 
+            
+                <a href="/tags/rvest/">rvest</a>, 
+            
+                <a href="/tags/selector-gadget/">selector gadget</a>, 
+            
+                <a href="/tags/mapping/">mapping</a>, 
+            
+                <a href="/tags/web-scraping/">web scraping</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fdilliards_support%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fdilliards_support%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Julian Carrasquillo" href="/">Julian Carrasquillo</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -3,19 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Julian Carrasquillo &middot; Julian Carrasquillo</title>
-        <meta name="description" content="Hello Friend.I am a business analyst at Chaco Footwear and am working on my master’s in data science at Grand Valley University in Grand Rapids, MI.
-I grew up in the Bronx and learned how to commute early while attending highschool in Harlem. Guidance from a favorite teacher of mine landed me at the University of Michigan. I left Ann Arbor with a degree in Applied Mathematics and have been an analyst ever since.">
+        <title>Mapping Store Locations With ggmap &middot; Julian Carrasquillo</title>
+        <meta name="description" content="Mapping is a great way to get a sense of total market penetration or, like this example, for exploring potential opportunities. For a simple example, I’m going to focus on mapping Dilliard’s department stores - partly because it has plenty of stores for a nice data visualization, mostly because their store locator is SUPER web scraper friendly.
+Dilliard’s locations were scraped from their Find a Store page on www.dilliards.com.Nordstrom and Von Maur locations are those currently carrying Chaco product, per Sales Manager’s records.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.45.1" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="Julian Carrasquillo">
-<meta property="og:description" content="Hello Friend.I am a business analyst at Chaco Footwear and am working on my master’s in data science at Grand Valley University in Grand Rapids, MI.
-I grew up in the Bronx and learned how to commute early while attending highschool in Harlem. Guidance from a favorite teacher of mine landed me at the University of Michigan. I left Ann Arbor with a degree in Applied Mathematics and have been an analyst ever since.">
+        <meta property="og:title" content="Mapping Store Locations With ggmap">
+<meta property="og:description" content="Mapping is a great way to get a sense of total market penetration or, like this example, for exploring potential opportunities. For a simple example, I’m going to focus on mapping Dilliard’s department stores - partly because it has plenty of stores for a nice data visualization, mostly because their store locator is SUPER web scraper friendly.
+Dilliard’s locations were scraped from their Find a Store page on www.dilliards.com.Nordstrom and Von Maur locations are those currently carrying Chaco product, per Sales Manager’s records.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/page/about/">
+<meta property="og:url" content="/1/01/01/dilliards_support/">
         <link rel="stylesheet" href="/dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -92,27 +92,80 @@ if (!doNotTrack) {
 
 
 <div class="container">
-    <article class="post-container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
-    <h1 class="post-title">Julian Carrasquillo</h1>
+    <h1 class="post-title" itemprop="name headline">Mapping Store Locations With ggmap</h1>
     
+    <p class="post-date">
+        <span>Published <time datetime="0001-01-01" itemprop="datePublished">Jan 1, 0001</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://twitter.com/juliancarras" itemprop="url" rel="author">Julian Carrasquillo</a>
+            </span>
+        </span>
+    </p>
 </header>
 
-        <div class="post-content clearfix">
+        <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <p><img src="/page/RiverRun.jpg" /></p>
-<div id="hello-friend." class="section level2">
-<h2>Hello Friend.</h2>
-<p>I am a business analyst at Chaco Footwear and am working on my master’s in data science at Grand Valley University in Grand Rapids, MI.</p>
-<p>I grew up in the Bronx and learned how to commute early while attending highschool in Harlem. Guidance from a favorite teacher of mine landed me at the University of Michigan. I left Ann Arbor with a degree in Applied Mathematics and have been an analyst ever since.</p>
-<p>Coming from the city, I got into outdoor activities relatively late and have been making up for lost time. While at Chaco, I’ve been inspired to camp, hike, and experience the great wild places of the US. Rivers appeal to me most, preferably in a canoe.</p>
-<p>Reach out. Let’s chat.</p>
-<p><img src="/page/AuSableRiver.jpg" />
-<a href="https://www.instagram.com/quinnbadder/">📷: Quinn Badder</a></p>
-</div>
+    <p>Mapping is a great way to get a sense of total market penetration or, like this example, for exploring potential opportunities. For a simple example, I’m going to focus on mapping Dilliard’s department stores - partly because it has plenty of stores for a nice data visualization, mostly because their <a href="https://www.dillards.com/stores">store locator</a> is SUPER web scraper friendly.</p>
+<ul>
+<li>Dilliard’s locations were scraped from their Find a Store page on www.dilliards.com.</li>
+<li>Nordstrom and Von Maur locations are those currently carrying Chaco product, per Sales Manager’s records.</li>
+</ul>
+<p><img src="/post/2018-08-17-map/Dilliards_Support_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<ul>
+<li>Dilliard’s locations are concentrated in the south and southeast, with strong clusters in bigger cities outside of that region.</li>
+<li>I think there is a good opportunity to pull for stores in the Southwest and Rockies region since the Dilliard’s consumer is different from the outdoor specialty crowd.</li>
+<li>Florida and the Gulf Coast has strong representation, which can help us with Reach the Beach. OSM can get the smaller Surf accounts while High Plains gets the department store shopper.</li>
+</ul>
 
 </div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/ggmap/">ggmap</a>, 
+            
+                <a href="/tags/mapping/">mapping</a>, 
+            
+                <a href="/tags/web-scraping/">web scraping</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Mapping%20Store%20Locations%20With%20ggmap&url=%2f1%2f01%2f01%2fdilliards_support%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Mapping%20Store%20Locations%20With%20ggmap&url=%2f1%2f01%2f01%2fdilliards_support%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
     </article>
 </div>
 
