@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Julian Carrasquillo</title>
-    <link>/post/</link>
+    <link>https://jul-carras.github.io/post/</link>
     <description>Recent content in Posts on Julian Carrasquillo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
     <lastBuildDate>Mon, 20 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jul-carras.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Web Scraping and Mapping</title>
-      <link>/2018/08/20/scraping_mapping/</link>
+      <link>https://jul-carras.github.io/2018/08/20/scraping_mapping/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/08/20/scraping_mapping/</guid>
+      <guid>https://jul-carras.github.io/2018/08/20/scraping_mapping/</guid>
       <description>Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
 With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.</description>
     </item>
     
     <item>
       <title>A/B Testing Case Study</title>
-      <link>/2018/08/01/test-ab/</link>
+      <link>https://jul-carras.github.io/2018/08/01/test-ab/</link>
       <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/08/01/test-ab/</guid>
+      <guid>https://jul-carras.github.io/2018/08/01/test-ab/</guid>
       <description>I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.
 Let me know what you think! Happy Scrolling.
 PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import. For wrangling, I brought in dplyr via the tidyverse package.</description>
@@ -35,10 +35,10 @@ PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import
     
     <item>
       <title>Finally got a site up</title>
-      <link>/2018/07/30/2018-07-30-first/</link>
+      <link>https://jul-carras.github.io/2018/07/30/2018-07-30-first/</link>
       <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/07/30/2018-07-30-first/</guid>
+      <guid>https://jul-carras.github.io/2018/07/30/2018-07-30-first/</guid>
       <description>Consider it an early birthday present to myself.While my summer courseload is winding down, I wanted to spend some time putting together a site. Most folks in the data science community suggest some type of presence - partially for visibility, but mostly to get your thoughts and projects in one place. I’ve done my fair share of googling how-to-do-this-thing-in-R, so it’s about time I contribute back.
 I’ve got an applied math degree from the University of Michigan and am currently enrolled in a relatively new data science program at Grand Valley State University.</description>
     </item>
