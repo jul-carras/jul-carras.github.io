@@ -2,31 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Julian Carrasquillo</title>
-    <link>https://jul-carras.github.io/page/</link>
+    <link>/page/</link>
     <description>Recent content in Pages on Julian Carrasquillo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
     
-	<atom:link href="https://jul-carras.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Julian Carrasquillo</title>
-      <link>https://jul-carras.github.io/page/about/</link>
+      <link>/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/page/about/</guid>
+      <guid>/page/about/</guid>
       <description>Hello Friend.I am a business analyst at Chaco Footwear and am working on my master’s in data science at Grand Valley State University in Grand Rapids, MI.
-I grew up in the Bronx and got to commuting early while attending highschool in Harlem. Guidance from a favorite teacher of mine landed me at the University of Michigan in Ann Arbor. I left with a degree in Applied Mathematics and have been an analyst ever since.</description>
+I am from the Bronx and attended the University of Michigan in Ann Arbor. I left with a Bachelor of Science in Applied Mathematics and have been an analyst ever since.
+Coming from the city, I got into outdoor activities relatively late in life and I’ve been making up for lost time.</description>
     </item>
     
     <item>
       <title>Resume</title>
-      <link>https://jul-carras.github.io/page/resume/</link>
+      <link>/page/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/page/resume/</guid>
+      <guid>/page/resume/</guid>
       <description>TECHNICAL SKILLSR PROGRAMMING LANGUAGETidyverse suite for data importing, wrangling, analysis, and visualization.RMarkdown, Shiny, and Flexdashboard for interactive and appealing report generation.Growing toolbox in text mining techniques, machine learning methods, API connections, and Git version control.STATISTICSExperienced in p-values, hypothesis testing, random sampling, and power analysis.Passed SOA professional Actuarial exams Probability P/1 and Financial Mathematics FM/2, both of which have historical passing rates less than 40%.</description>
     </item>
     

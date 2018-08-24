@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogging on Julian Carrasquillo</title>
-    <link>https://jul-carras.github.io/tags/blogging/</link>
+    <link>/tags/blogging/</link>
     <description>Recent content in Blogging on Julian Carrasquillo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
     <lastBuildDate>Mon, 30 Jul 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://jul-carras.github.io/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Finally got a site up</title>
-      <link>https://jul-carras.github.io/2018/07/30/2018-07-30-first/</link>
+      <link>/2018/07/30/2018-07-30-first/</link>
       <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/2018/07/30/2018-07-30-first/</guid>
+      <guid>/2018/07/30/2018-07-30-first/</guid>
       <description>Consider it an early birthday present to myself.While my summer courseload is winding down, I wanted to spend some time putting together a site. Most folks in the data science community suggest some type of presence - partially for visibility, but mostly to get your thoughts and projects in one place. I’ve done my fair share of googling how-to-do-this-thing-in-R, so it’s about time I contribute back.
 I’ve got an applied math degree from the University of Michigan and am currently enrolled in a relatively new data science program at Grand Valley State University.</description>
     </item>
