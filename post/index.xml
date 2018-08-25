@@ -28,9 +28,8 @@ With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool,
       <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/08/01/test-ab/</guid>
-      <description>I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.
-Let me know what you think! Happy Scrolling.
-PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import. For wrangling, I brought in dplyr via the tidyverse package.</description>
+      <description>When making updates to your website, it’s hard to know whether or not a change caused an improvement in your KPIs. An A/B Test provides a statistical approach to validate any findings.
+I got the opportunity to try out an A/B testing analysis using some fabricated traffic data, along with a hypothesis to check. It’s important to know that there is a ton of front end work to do this right.</description>
     </item>
     
     <item>
@@ -40,7 +39,7 @@ PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import
       
       <guid>/2018/07/30/2018-07-30-first/</guid>
       <description>Consider it an early birthday present to myself.While my summer courseload is winding down, I wanted to spend some time putting together a site. Most folks in the data science community suggest some type of presence - partially for visibility, but mostly to get your thoughts and projects in one place. I’ve done my fair share of googling how-to-do-this-thing-in-R, so it’s about time I contribute back.
-I’ve got an applied math degree from the University of Michigan and am currently enrolled in a relatively new data science program at Grand Valley State University.</description>
+This site is built using Yihui Xie’s Blogdown package.</description>
     </item>
     
   </channel>

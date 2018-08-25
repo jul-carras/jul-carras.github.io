@@ -4,18 +4,16 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>A/B Testing Case Study &middot; Julian Carrasquillo</title>
-        <meta name="description" content="I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.
-Let me know what you think! Happy Scrolling.
-PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import. For wrangling, I brought in dplyr via the tidyverse package.">
+        <meta name="description" content="When making updates to your website, it’s hard to know whether or not a change caused an improvement in your KPIs. An A/B Test provides a statistical approach to validate any findings.
+I got the opportunity to try out an A/B testing analysis using some fabricated traffic data, along with a hypothesis to check. It’s important to know that there is a ton of front end work to do this right.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.45.1" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="A/B Testing Case Study">
-<meta property="og:description" content="I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.
-Let me know what you think! Happy Scrolling.
-PackagesAll of the data was in an Excel spreadsheet, so I used readxl to import. For wrangling, I brought in dplyr via the tidyverse package.">
+<meta property="og:description" content="When making updates to your website, it’s hard to know whether or not a change caused an improvement in your KPIs. An A/B Test provides a statistical approach to validate any findings.
+I got the opportunity to try out an A/B testing analysis using some fabricated traffic data, along with a hypothesis to check. It’s important to know that there is a ton of front end work to do this right.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="/2018/08/01/test-ab/">
         <link rel="stylesheet" href="/dist/styles.css">
@@ -115,8 +113,10 @@ if (!doNotTrack) {
     <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<p>I got the opportunity to try out an A/B testing analysis using some fabricated traffic data. The data was even provided with a hypothesis to check! The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.</p>
-<p>Let me know what you think! Happy Scrolling.</p>
+<p>When making updates to your website, it’s hard to know whether or not a change caused an improvement in your KPIs. An A/B Test provides a statistical approach to validate any findings.</p>
+<p>I got the opportunity to try out an A/B testing analysis using some fabricated traffic data, along with a hypothesis to check. It’s important to know that there is a ton of front end work to do this right. These experiments needs to be <em>designed</em>, particularly with respect to the sample size needed and effect size.</p>
+<p>For this example, I’m lucky enough to have an experiment that was designed and completed before I can access to the data. The practice is focused on the statistical analysis. Check out this account from <a href="https://medium.com/airbnb-engineering/experiments-at-airbnb-e2db3abf39e7">AirBnB</a> that shows the importance of design and context when tackling these types of problems.</p>
+<p>The below covers the presented hypothesis, background information, a full statistical analysis, and next-step suggestions.</p>
 <div id="packages" class="section level2">
 <h2>Packages</h2>
 <p>All of the data was in an Excel spreadsheet, so I used <code>readxl</code> to import. For wrangling, I brought in <code>dplyr</code> via the <code>tidyverse</code> package. <code>knitr</code> and <code>kableExtra</code> help for making pretty tables for reports.</p>
@@ -347,12 +347,25 @@ variant &lt;- ab_data %&gt;%
 <li>Create a test for more specific category links like “Camp”, “Run”, and “Trail.”</li>
 </ul>
 <p><br></p>
-<p>Made using <a href="https://www.rstudio.com">RStudio</a> &amp; <a href="https://rmarkdown.rstudio.com/">RMarkdown</a></p>
 </div>
 
 </div>
 
         <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/a/b-testing/">a/b testing</a>, 
+            
+                <a href="/tags/optimization/">optimization</a>, 
+            
+                <a href="/tags/hypothesis-testing/">hypothesis testing</a>, 
+            
+                <a href="/tags/tidyverse/">tidyverse</a>
+            
+        </p>
     
 
     <div class="share">

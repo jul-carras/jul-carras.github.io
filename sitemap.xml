@@ -18,6 +18,18 @@
   </url>
   
   <url>
+    <loc>/tags/a/b-testing/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/blogdown/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/blogging/</loc>
     <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -42,6 +54,12 @@
   </url>
   
   <url>
+    <loc>/tags/hypothesis-testing/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -54,6 +72,12 @@
   <url>
     <loc>/tags/mapping/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/optimization/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -86,7 +110,13 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tidyverse/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

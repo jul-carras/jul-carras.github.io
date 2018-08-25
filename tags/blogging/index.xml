@@ -19,7 +19,7 @@
       
       <guid>/2018/07/30/2018-07-30-first/</guid>
       <description>Consider it an early birthday present to myself.While my summer courseload is winding down, I wanted to spend some time putting together a site. Most folks in the data science community suggest some type of presence - partially for visibility, but mostly to get your thoughts and projects in one place. I’ve done my fair share of googling how-to-do-this-thing-in-R, so it’s about time I contribute back.
-I’ve got an applied math degree from the University of Michigan and am currently enrolled in a relatively new data science program at Grand Valley State University.</description>
+This site is built using Yihui Xie’s Blogdown package.</description>
     </item>
     
   </channel>

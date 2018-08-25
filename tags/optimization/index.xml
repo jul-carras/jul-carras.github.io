@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Optimization on Julian Carrasquillo</title>
+    <link>/tags/optimization/</link>
+    <description>Recent content in Optimization on Julian Carrasquillo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>My Name</copyright>
+    <lastBuildDate>Wed, 01 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A/B Testing Case Study</title>
+      <link>/2018/08/01/test-ab/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/08/01/test-ab/</guid>
+      <description>When making updates to your website, it’s hard to know whether or not a change caused an improvement in your KPIs. An A/B Test provides a statistical approach to validate any findings.
+I got the opportunity to try out an A/B testing analysis using some fabricated traffic data, along with a hypothesis to check. It’s important to know that there is a ton of front end work to do this right.</description>
+    </item>
+    
+  </channel>
+</rss>
