@@ -40,11 +40,29 @@
     </item>
     
     <item>
+      <title>Data Collection</title>
+      <link>/tags/data-collection/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-collection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Data Science</title>
       <link>/tags/data-science/</link>
       <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Directories</title>
+      <link>/tags/directories/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/directories/</guid>
       <description></description>
     </item>
     
@@ -94,6 +112,24 @@
     </item>
     
     <item>
+      <title>Pdftools</title>
+      <link>/tags/pdftools/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pdftools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rebus</title>
+      <link>/tags/rebus/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rebus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Rvest</title>
       <link>/tags/rvest/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
@@ -114,7 +150,7 @@
     <item>
       <title>Tidyverse</title>
       <link>/tags/tidyverse/</link>
-      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/tidyverse/</guid>
       <description></description>
@@ -126,6 +162,15 @@
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/web-scraping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writing Functions</title>
+      <link>/tags/writing-functions/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/writing-functions/</guid>
       <description></description>
     </item>
     
