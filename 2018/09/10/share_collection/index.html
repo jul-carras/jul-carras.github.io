@@ -112,10 +112,7 @@ if (!doNotTrack) {
 <div id="background" class="section level2">
 <h2>Background</h2>
 <p>The <a href="https://www.youtube.com/watch?v=c-UVTcZhOS8">Color + Trend team</a> at Chaco designs every webbing placed on our Z sandals from a collection of threads. The very talented group puts together visually striking patterns that allow us to offer fresh takes on our classic silhouette annually.</p>
-<div class="figure">
-<img src="/post/2018-09-10-share/webbing.jpg" alt="A small selection of our offerings" />
-<p class="caption">A small selection of our offerings</p>
-</div>
+<p><img src="/post/2018-09-10-share/webbing.jpg" /></p>
 <p>It takes a lot of work and subsequently lots of PhotoShop, InDesign, and PDF files to get a collection of styles out the door and into the retail market.</p>
 <p>When a season starts, the team generates a color palette to work with.</p>
 <p><img src="/post/2018-09-10-share/Chaco_S19_Swatch_Book_Page_1.jpg" /></p>
@@ -136,14 +133,8 @@ if (!doNotTrack) {
 <p><img src="/post/2018-09-10-share/sample_web.jpg" /></p>
 <p>So, if I knew how to read the content on these PDF files and extract the color codes, I’d be able to link yarns to each file. I came across this <a href="https://stackoverflow.com/questions/3852354/extracting-text-data-from-pdf-files">Stack Overflow post</a>. I followed the advice from <a href="https://stackoverflow.com/users/1758082/remko-duursma">Remko Duursma</a> and tried out the <code>pdftools</code> package. Using its function <code>pdf_text</code> and some regular expression with <code>stringr</code>, I felt confident that I could extract the <code>##-####</code> patterns from an arbitrary file.</p>
 <p>The next hurdle was to know where to find these files. I quickly learned that I am VERY fortunate for the meticulous file-folder naming scheme that the product team uses. Not only is there a logical hierarchy of folders that go from the selling season, through to gender, then to the pattern, but the color files also had season, gender, color, and webbing width consistently built in.</p>
-<div class="figure">
-<img src="/post/2018-09-10-share/folder_naming.jpg" alt="Beautifully organized folders" />
-<p class="caption">Beautifully organized folders</p>
-</div>
-<div class="figure">
-<img src="/post/2018-09-10-share/file_naming.jpg" alt="With consistently named files." />
-<p class="caption">With consistently named files.</p>
-</div>
+<p><img src="/post/2018-09-10-share/folder_naming.jpg" /></p>
+<p><img src="/post/2018-09-10-share/file_naming.jpg" /></p>
 <p>Now knowing the paths to all of the necessary files, along with the tools to collect the color codes within them, I set off to turn the directory of product files into a clean, succinct dataframe.
 <br><br></p>
 </div>
