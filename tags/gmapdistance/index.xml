@@ -18,8 +18,7 @@
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jul-carras.github.io/2019/01/19/ggmap_distances/</guid>
-      <description>Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.
-Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points.</description>
+      <description>Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points. Or specifically, how far are these point from each other? We can calculate euclidean distances between our points, but this doesn’t really translate to the real world.</description>
     </item>
     
   </channel>

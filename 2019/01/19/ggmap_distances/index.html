@@ -4,16 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Distances Between ggmap Coordinates using gmapdistance &middot; Julian Carrasquillo</title>
-        <meta name="description" content="Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.
-Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points.">
+        <meta name="description" content="Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points. Or specifically, how far are these point from each other? We can calculate euclidean distances between our points, but this doesn’t really translate to the real world.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.45.1" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Distances Between ggmap Coordinates using gmapdistance">
-<meta property="og:description" content="Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.
-Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points.">
+<meta property="og:description" content="Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points. Or specifically, how far are these point from each other? We can calculate euclidean distances between our points, but this doesn’t really translate to the real world.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://jul-carras.github.io/2019/01/19/ggmap_distances/">
         <link rel="stylesheet" href="https://jul-carras.github.io/dist/styles.css">
@@ -110,8 +108,7 @@ if (!doNotTrack) {
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <p>Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.</p>
-<p>Here is a next-step analysis jumping off of the <a href="https://jul-carras.github.io/2018/08/20/scraping_mapping/">web scraping and mapping post</a> from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points. Or specifically, <em>how far are these point from each other?</em> We can calculate euclidean distances between our points, but this doesn’t really translate to the real world. On a map, no 2 distances are ever really equal. For example, it takes about 30 minutes to drive from the Inwood, the most northern neighborhood in Manhattan, to Battery Park in the south. In the same amount of time it takes to cover those 13 miles in NYC, one can cover about double the distance driving from Grand Rapids to the city of Holland in Western Michigan.</p>
+    <p>Here is a next-step analysis jumping off of the <a href="https://jul-carras.github.io/2018/08/20/scraping_mapping/">web scraping and mapping post</a> from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points. Or specifically, <em>how far are these point from each other?</em> We can calculate euclidean distances between our points, but this doesn’t really translate to the real world. On a map, no 2 distances are ever really equal. For example, it takes about 30 minutes to drive from the Inwood, the most northern neighborhood in Manhattan, to Battery Park in the south. In the same amount of time it takes to cover those 13 miles in NYC, one can cover about double the distance driving from Grand Rapids to the city of Holland in Western Michigan.</p>
 <p>With my mapping project, we needed a way to classify points based on their driving distance from a group of key addresses, which were already existing outdoor specialty accounts. We wanted to expand distribution with as little effect on our already established core business partners. I came across the <a href="https://cran.r-project.org/web/packages/gmapsdistance/gmapsdistance.pdf"><code>gmapdistance</code></a> package, developed and maintained by economist <a href="http://rodrigoazuero.com/index.html">Rodrigo Azuero</a>. There were 3 big appeals for me -</p>
 <ul>
 <li>It returns a list of 3 values: status of the query, driving distance in meters, and driving time in seconds.</li>
@@ -161,10 +158,10 @@ set.api.key(google_api_key)</code></pre>
               destination = &quot;holland+mi&quot;,
               mode = &quot;driving&quot;)</code></pre>
 <pre><code>## $Time
-## [1] 2120
+## [1] 2135
 ## 
 ## $Distance
-## [1] 48179
+## [1] 45573
 ## 
 ## $Status
 ## [1] &quot;OK&quot;</code></pre>
@@ -193,19 +190,19 @@ vector_inputs$Time %&gt;% kable()</code></pre>
 <tr class="odd">
 <td align="left">inwood+manhattan</td>
 <td align="right">1980</td>
-<td align="right">42549</td>
+<td align="right">42385</td>
 <td align="right">14310</td>
 </tr>
 <tr class="even">
 <td align="left">grand+rapids+mi</td>
 <td align="right">41208</td>
-<td align="right">2120</td>
-<td align="right">36996</td>
+<td align="right">2135</td>
+<td align="right">35875</td>
 </tr>
 <tr class="odd">
 <td align="left">washington+memorial</td>
 <td align="right">13605</td>
-<td align="right">37521</td>
+<td align="right">36909</td>
 <td align="right">312</td>
 </tr>
 </tbody>
@@ -219,7 +216,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
                            destination = destinations,
                            mode = &quot;driving&quot;)})</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.42    0.13    9.96</code></pre>
+##    0.48    0.03   14.40</code></pre>
 <p>Run time hovers around 10 - 12 seconds. From my experience, a retrieval will be timed at about 1 second a piece. It’s important to hone in on your interested list before running any vectors of locations. There is a <code>combinations</code> argument that will compute either all combinations (“all”) or just corresponding entries (“pairwise”). This is useful if you’ve got specific pairs of locations you want to investigate.</p>
 </div>
 <div id="other-arguments-for-tuning" class="section level2">
@@ -338,11 +335,11 @@ get_distances &lt;- function(..state, group_1, group_2){
 ## 1    inwood+manhattan Time.battery+park+ny  1980           33
 ## 2     grand+rapids+mi Time.battery+park+ny 41208          687
 ## 3 washington+memorial Time.battery+park+ny 13605          227
-## 4    inwood+manhattan      Time.holland+mi 42549          709
-## 5     grand+rapids+mi      Time.holland+mi  2120           35
-## 6 washington+memorial      Time.holland+mi 37521          625
+## 4    inwood+manhattan      Time.holland+mi 42385          706
+## 5     grand+rapids+mi      Time.holland+mi  2135           36
+## 6 washington+memorial      Time.holland+mi 36909          615
 ## 7    inwood+manhattan  Time.white+house+dc 14310          238
-## 8     grand+rapids+mi  Time.white+house+dc 36996          617
+## 8     grand+rapids+mi  Time.white+house+dc 35875          598
 ## 9 washington+memorial  Time.white+house+dc   312            5</code></pre>
 <p>Using various time thresholds, I was able to grade each individual Dillard’s location by how many Outdoor Specialty stores were within that many minutes of driving.</p>
 </div>
@@ -364,7 +361,7 @@ ggmap(mapped_region) +
         legend.title = element_blank()) +
   ggtitle(label = &quot;Dillards Locations for Consideration&quot;,
           subtitle = &quot;Based on Driving Distance to Outdoor Specialty Analysis&quot;)</code></pre>
-<p><img src="/post/2018-11-4-ggmap/ggmap_distances_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="/post/2019-01-19-ggmap/ggmap_distances_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 
 </div>
