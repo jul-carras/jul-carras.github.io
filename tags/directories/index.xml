@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Directories on Julian Carrasquillo</title>
-    <link>/tags/directories/</link>
+    <link>https://jul-carras.github.io/tags/directories/</link>
     <description>Recent content in Directories on Julian Carrasquillo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
     <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/directories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jul-carras.github.io/tags/directories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Data Collection - Intercompany ShareDrive</title>
-      <link>/2018/09/10/share_collection/</link>
+      <link>https://jul-carras.github.io/2018/09/10/share_collection/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/09/10/share_collection/</guid>
+      <guid>https://jul-carras.github.io/2018/09/10/share_collection/</guid>
       <description>Data collection can get really messy. Rarely are we lucky enough to get a perfectly tidy data set right out of the box. Building and cleaning data sets is becoming a favorite task for me because I am able to contribute unique information to my team using super interesting methods, paving the way for new problems to be solved. In this scenario, the data that was needed rested in an internal company ShareDrive.</description>
     </item>
     

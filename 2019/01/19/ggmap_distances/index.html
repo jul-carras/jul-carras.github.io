@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Distances Between ggmap Coordinates using gmapdistance &middot; Julian Carrasquillo</title>
+        <meta name="description" content="Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.
+Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.45.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Distances Between ggmap Coordinates using gmapdistance">
+<meta property="og:description" content="Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.
+Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jul-carras.github.io/2019/01/19/ggmap_distances/">
+        <link rel="stylesheet" href="https://jul-carras.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+    </head>
+    <body>
+        
+<script>
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'XXX', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Julian Carrasquillo" href="https://jul-carras.github.io/">Julian Carrasquillo</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://jul-carras.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/juliancarras">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/juliancarrasquillo/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:jul.carras@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/page/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Blog" href="/post/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Resume" href="/page/resume">Resume</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Distances Between ggmap Coordinates using gmapdistance</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-01-19" itemprop="datePublished">Jan 19, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://twitter.com/juliancarras" itemprop="url" rel="author">Julian Carrasquillo</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p>Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.</p>
+<p>Here is a next-step analysis jumping off of the <a href="https://jul-carras.github.io/2018/08/20/scraping_mapping/">web scraping and mapping post</a> from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points. Or specifically, <em>how far are these point from each other?</em> We can calculate euclidean distances between our points, but this doesn’t really translate to the real world. On a map, no 2 distances are ever really equal. For example, it takes about 30 minutes to drive from the Inwood, the most northern neighborhood in Manhattan, to Battery Park in the south. In the same amount of time it takes to cover those 13 miles in NYC, one can cover about double the distance driving from Grand Rapids to the city of Holland in Western Michigan.</p>
+<p>With my mapping project, we needed a way to classify points based on their driving distance from a group of key addresses, which were already existing outdoor specialty accounts. We wanted to expand distribution with as little effect on our already established core business partners. I came across the <a href="https://cran.r-project.org/web/packages/gmapsdistance/gmapsdistance.pdf"><code>gmapdistance</code></a> package, developed and maintained by economist <a href="http://rodrigoazuero.com/index.html">Rodrigo Azuero</a>. There were 3 big appeals for me -</p>
+<ul>
+<li>It returns a list of 3 values: status of the query, driving distance in meters, and driving time in seconds.</li>
+<li>It can run on 2 vectors of locations, returning a list of matrices covering each combination of inputs.</li>
+<li>It takes longitude and latitude as inputs, which we’ve already retrieved in the last exercise.</li>
+</ul>
+<p>With my vectors of scraped Dillard’s stores and outdoor specialty locations, I set out to find an optimal group for expansion.</p>
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<p>To get started, we need the below libraries.</p>
+<pre class="r"><code>library(tidyverse)
+library(ggmap)
+library(gmapsdistance)
+library(knitr)</code></pre>
+<p>Similar to the the coordinate retriever, we will need to set up our Google Maps API key. You can use <a href="https://www.youtube.com/watch?v=9ImLCQBj9SE">this video</a> to guide you through set up. The <code>set.api.key</code> sort of applies our key to the environment, allowing us to call the API without having to specify it each time.</p>
+<pre class="r"><code>google_api_key &lt;- &quot;your_key&quot;
+register_google(key = google_api_key)
+set.api.key(google_api_key)</code></pre>
+</div>
+<div id="data-collection" class="section level1">
+<h1>Data Collection</h1>
+<p>Because this was covered in <a href="https://jul-carras.github.io/2018/08/20/scraping_mapping/">this post</a>, I will simply load in my addresses. This can be done with any vector of addresses. They don’t even need to be in the formal street-city-state-postal format either! Anything that you’d search for in Google Maps will function.</p>
+<p><br></p>
+</div>
+<div id="the-gmapdistance-package" class="section level1">
+<h1>The <code>gmapdistance</code> Package</h1>
+<p>The main function in this package is <code>gmapdistance</code>. It needs 3 minimum arguments: <code>origin</code>, <code>destination</code>, and <code>mode</code>. The last of which takes “bicycling”, “walking”, “transit”, or “driving” as a string. Note that we need to use <code>+</code> anywhere we’d have a space.</p>
+<pre class="r"><code>gmapsdistance(origin = &quot;inwood+manhattan&quot;,
+              destination = &quot;battery+park&quot;,
+              mode = &quot;driving&quot;)</code></pre>
+<pre><code>## $Time
+## [1] 1980
+## 
+## $Distance
+## [1] 20895
+## 
+## $Status
+## [1] &quot;OK&quot;</code></pre>
+<p>The function returns a named list of length 3:</p>
+<ul>
+<li>Time - number of seconds to complete the specified trip.</li>
+<li>Distance - number of meters for the specified trip.</li>
+<li>Status - returns “OK” if retrieval did not cause an error.</li>
+</ul>
+<p>So, it takes about 30 minutes (1803 seconds / 60) to go from the Inwood neighborhood to Battery Park in Manhattan. Let’s check Grand Rapids to Holland, MI!</p>
+<pre class="r"><code>gmapsdistance(origin = &quot;grand+rapids+mi&quot;,
+              destination = &quot;holland+mi&quot;,
+              mode = &quot;driving&quot;)</code></pre>
+<pre><code>## $Time
+## [1] 2120
+## 
+## $Distance
+## [1] 48179
+## 
+## $Status
+## [1] &quot;OK&quot;</code></pre>
+<p>Almost the same amount of time driving, yet we cover so much more ground! These sets of points are proving to be similar in terms of proximity - something we wold not have discovered using euclidean distance.</p>
+<div id="vector-inputs" class="section level2">
+<h2>Vector Inputs</h2>
+<p>The real power of this function comes in its ability to work with vectors of locations.</p>
+<pre class="r"><code>origins &lt;- c(&quot;inwood+manhattan&quot;, &quot;grand+rapids+mi&quot;, &quot;washington+memorial&quot;)
+destinations &lt;- c(&quot;battery+park+ny&quot;, &quot;holland+mi&quot;, &quot;white+house+dc&quot;)
+
+vector_inputs &lt;- gmapsdistance(origin = origins,
+                               destination = destinations,
+                               mode = &quot;driving&quot;)
+
+vector_inputs$Time %&gt;% kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">or</th>
+<th align="right">Time.battery+park+ny</th>
+<th align="right">Time.holland+mi</th>
+<th align="right">Time.white+house+dc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">inwood+manhattan</td>
+<td align="right">1980</td>
+<td align="right">42549</td>
+<td align="right">14310</td>
+</tr>
+<tr class="even">
+<td align="left">grand+rapids+mi</td>
+<td align="right">41208</td>
+<td align="right">2120</td>
+<td align="right">36996</td>
+</tr>
+<tr class="odd">
+<td align="left">washington+memorial</td>
+<td align="right">13605</td>
+<td align="right">37521</td>
+<td align="right">312</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly, the function returns a list of length 3, but each entry is a data frame with dimensions dependent on the input vectors. Looking at the times above, we see the ~30 minute trips from Inwood to Battery Park and Grand Rapids to Holland, while the Washington Memorial is just 5 minutes from the White House.</p>
+</div>
+<div id="processing-considerations" class="section level2">
+<h2>Processing Considerations</h2>
+<p>In the above example, we see that 9 trips were retrieved from the API. Each of these takes time and a long vector can make a script cumbersome. See below run time using <code>system.time</code>:</p>
+<pre class="r"><code>system.time({gmapsdistance(origin = origins,
+                           destination = destinations,
+                           mode = &quot;driving&quot;)})</code></pre>
+<pre><code>##    user  system elapsed 
+##    0.42    0.13    9.96</code></pre>
+<p>Run time hovers around 10 - 12 seconds. From my experience, a retrieval will be timed at about 1 second a piece. It’s important to hone in on your interested list before running any vectors of locations. There is a <code>combinations</code> argument that will compute either all combinations (“all”) or just corresponding entries (“pairwise”). This is useful if you’ve got specific pairs of locations you want to investigate.</p>
+</div>
+<div id="other-arguments-for-tuning" class="section level2">
+<h2>Other Arguments for Tuning</h2>
+<p>The function has additional default arguments that can be modified including <code>traffic_model</code> (“optimistic” vs “pessimistic”), <code>avoid</code> (“tolls”, “highways”), and even arrival or departure times.</p>
+<p><br></p>
+</div>
+</div>
+<div id="using-longitude-and-latitude-as-inputs" class="section level1">
+<h1>Using Longitude and Latitude as Inputs</h1>
+<p>Because I was storing longitude and latitude features in order to plot the locations on a map, I used another useful feature of the <code>gmapdistance</code> function - it takes coordinates, too! Specifically in “lat+lon” format. Using our sample vectors:</p>
+<pre class="r"><code>origins %&gt;%
+  data_frame(locations = .) %&gt;%
+  mutate_geocode(locations) %&gt;%
+  mutate(dist_input = paste0(lat, &quot;+&quot;, lon)) %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">locations</th>
+<th align="right">lon</th>
+<th align="right">lat</th>
+<th align="left">dist_input</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">inwood+manhattan</td>
+<td align="right">-73.92120</td>
+<td align="right">40.86771</td>
+<td align="left">40.8677145+-73.9212019</td>
+</tr>
+<tr class="even">
+<td align="left">grand+rapids+mi</td>
+<td align="right">-85.66809</td>
+<td align="right">42.96336</td>
+<td align="left">42.9633599+-85.6680863</td>
+</tr>
+<tr class="odd">
+<td align="left">washington+memorial</td>
+<td align="right">-77.03528</td>
+<td align="right">38.88948</td>
+<td align="left">38.8894838+-77.0352791</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>destinations %&gt;%
+  data_frame(locations = .) %&gt;%
+  mutate_geocode(locations) %&gt;%
+  mutate(dist_input = paste0(lat, &quot;+&quot;, lon)) %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">locations</th>
+<th align="right">lon</th>
+<th align="right">lat</th>
+<th align="left">dist_input</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">battery+park+ny</td>
+<td align="right">-74.01703</td>
+<td align="right">40.70328</td>
+<td align="left">40.7032775+-74.0170279</td>
+</tr>
+<tr class="even">
+<td align="left">holland+mi</td>
+<td align="right">-86.10893</td>
+<td align="right">42.78752</td>
+<td align="left">42.7875235+-86.1089301</td>
+</tr>
+<tr class="odd">
+<td align="left">white+house+dc</td>
+<td align="right">-77.03653</td>
+<td align="right">38.89768</td>
+<td align="left">38.8976763+-77.0365298</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>dist_input</code> column is now ready to be used as an input to <code>gmapdistance</code>!</p>
+</div>
+<div id="finding-the-best-dillards" class="section level1">
+<h1>Finding the best Dillards</h1>
+<p>The above method was used to convert the lists of potential Dillards locations and current Outdoor Specialty accounts into 2 input vectors in the dist_input format. As mentioned above, the vectors of just a few hundred entries would have produced a massive data frame of retrievals. To cut back on run time, I prefiltered the vectors based on state and then ran them through the <code>gmapdistance</code> function. Below sample was used to build a function that applied to a list of states.</p>
+<pre class="r"><code># Prefilter both groups to cut on processing
+dillards_fl &lt;- dillards_dist %&gt;% filter(state == &quot;FL&quot;)
+outdoor_fl &lt;- outdoor_dist %&gt;% filter(state == &quot;FL&quot;)
+
+# Run function
+output_fl &lt;- gmapsdistance(dillards_fl$dist_input, outdoor_fl$dist_input, mode = &quot;driving&quot;)
+
+# Add address field to line up coordinate inputs with readable locations
+output_fl$Time &lt;- dillards_fl$address
+
+# Store time only
+time_matrix_fl &lt;- output_fl$Time
+
+# Function
+get_distances &lt;- function(..state, group_1, group_2){
+  group_1_filt &lt;- group_1 %&gt;% filter(state == ..state)
+  group_2_filt &lt;- group_2 %&gt;% filter(state == ..state)
+  output &lt;- gmapsdistance(group_1_filt$dist_input, group_2_filt$dist_input, mode = &quot;driving&quot;)  
+  output$Time &lt;- group_1_filt$address
+  return(output$Time)
+}</code></pre>
+</div>
+<div id="using-tidyrgather-to-analyze" class="section level1">
+<h1>Using <code>tidyr::gather</code> to Analyze</h1>
+<p>The dataframe output is useful at a glance, but we are better off using a long table to systematically analyze. Using <code>gather</code> allows us to see the travel time for specific pairs of locations. For better readability, we can add in a column to show the time in minutes using <code>mutate</code>.</p>
+<pre class="r"><code>vector_inputs$Time %&gt;%
+  gather(destination, time, -or) %&gt;%
+  mutate(time_minutes = round(time / 60.0, digits = 0)) </code></pre>
+<pre><code>##                    or          destination  time time_minutes
+## 1    inwood+manhattan Time.battery+park+ny  1980           33
+## 2     grand+rapids+mi Time.battery+park+ny 41208          687
+## 3 washington+memorial Time.battery+park+ny 13605          227
+## 4    inwood+manhattan      Time.holland+mi 42549          709
+## 5     grand+rapids+mi      Time.holland+mi  2120           35
+## 6 washington+memorial      Time.holland+mi 37521          625
+## 7    inwood+manhattan  Time.white+house+dc 14310          238
+## 8     grand+rapids+mi  Time.white+house+dc 36996          617
+## 9 washington+memorial  Time.white+house+dc   312            5</code></pre>
+<p>Using various time thresholds, I was able to grade each individual Dillard’s location by how many Outdoor Specialty stores were within that many minutes of driving.</p>
+</div>
+<div id="final-map" class="section level1">
+<h1>Final Map</h1>
+<p>After agreeing on driving time thresholds, the driving distances between pairs were filtered and counted against each Dillard location. For example, Store in Mall X has 2 outdoor specialty accounts within a 30 minute drive. Is that acceptable?</p>
+<p>After internal discussions, we decided on a selection of stores and ran the below map showing mall names and locations to communicate with our partners.</p>
+<pre class="r"><code># Plot malls on US map with labels showing mall name.
+ggmap(mapped_region) +
+  geom_point(aes(x = lon, y = lat), alpha = 0.8, data = final_list_coord) +
+  geom_label(aes(x = lon, y = lat, label = Mall), 
+             position = position_jitter(width = 0.2, height = 0.2),
+             label.padding = unit(0.1, &quot;lines&quot;),
+             alpha = 0.8, size = 1, data = final_list_coord) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = &quot;top&quot;,
+        legend.title = element_blank()) +
+  ggtitle(label = &quot;Dillards Locations for Consideration&quot;,
+          subtitle = &quot;Based on Driving Distance to Outdoor Specialty Analysis&quot;)</code></pre>
+<p><img src="/post/2018-11-4-ggmap/ggmap_distances_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/mapping/">mapping</a>, 
+            
+                <a href="/tags/ggmap/">ggmap</a>, 
+            
+                <a href="/tags/gmapdistance/">gmapdistance</a>, 
+            
+                <a href="/tags/googlemaps-api/">googlemaps api</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Distances%20Between%20ggmap%20Coordinates%20using%20gmapdistance&url=https%3a%2f%2fjul-carras.github.io%2f2019%2f01%2f19%2fggmap_distances%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Distances%20Between%20ggmap%20Coordinates%20using%20gmapdistance&url=https%3a%2f%2fjul-carras.github.io%2f2019%2f01%2f19%2fggmap_distances%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Julian Carrasquillo" href="https://jul-carras.github.io/">Julian Carrasquillo</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://jul-carras.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://jul-carras.github.io/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="https://jul-carras.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

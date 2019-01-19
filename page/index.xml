@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Julian Carrasquillo</title>
-    <link>/page/</link>
+    <link>https://jul-carras.github.io/page/</link>
     <description>Recent content in Pages on Julian Carrasquillo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
     
-	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jul-carras.github.io/page/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Julian Carrasquillo</title>
-      <link>/page/about/</link>
+      <link>https://jul-carras.github.io/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/page/about/</guid>
-      <description>Hello Friend.I am a business analyst at Chaco Footwear and data science graduate student at Grand Valley State University in Grand Rapids, MI.
-Originally from Bronx, NY, I left home to attend the University of Michigan in Ann Arbor. I finished up there with a Bachelor of Science in Applied Mathematics and have been an analyst ever since.
-Coming from NYC, I got into outdoor activities relatively late in life, but I’m making up for lost time.</description>
+      <guid>https://jul-carras.github.io/page/about/</guid>
+      <description>Welcome!I am an experienced business analyst in the outdoor industry and am currently working towards a Master’s degree in Data Science. Skilled in R, I have a focus in the tidyverse set of packages.
+I like data visualization, insight building, and tool development. My aim for this platform is to connect with others, share my methods, and learn as much as I can.
+Check out the blog to see some of my recent projects.</description>
     </item>
     
     <item>
       <title>Resume</title>
-      <link>/page/resume/</link>
+      <link>https://jul-carras.github.io/page/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/page/resume/</guid>
-      <description>TECHNICAL SKILLSR PROGRAMMING LANGUAGETidyverse suite for data importing, wrangling, analysis, and visualization.RMarkdown, Shiny, and Flexdashboard for interactive and appealing report generation.Growing toolbox in text mining techniques, machine learning methods, API connections, and Git version control.STATISTICSExperienced in p-values, hypothesis testing, random sampling, and power analysis.Passed SOA professional Actuarial exams Probability P/1 and Financial Mathematics FM/2, both of which have historical passing rates less than 40%.</description>
+      <guid>https://jul-carras.github.io/page/resume/</guid>
+      <description>SKILLSSTATISTICSHigh aptitude in regression modeling &amp;amp; prediction methods for multivariate &amp;amp; categorical data analysis.Versed in other machine learning methods including decision trees, k-means clustering, &amp;amp; principal component analysis.Demonstrated core understanding by passing SOA professional actuarial exams Probability P/1 &amp;amp; Financial Mathematics FM/2, assessments with historical passing rates less than 40%.PROGRAMMINGEstablished R user, aligning with the Tidyverse set of packages for data importing, wrangling, analysis, and visualization.</description>
     </item>
     
   </channel>

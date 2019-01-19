@@ -3,160 +3,177 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/2018/09/10/share_collection/</loc>
+    <loc>https://jul-carras.github.io/2019/01/19/ggmap_distances/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/2018/09/10/share_collection/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/08/20/scraping_mapping/</loc>
+    <loc>https://jul-carras.github.io/2018/08/20/scraping_mapping/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/08/01/test-ab/</loc>
+    <loc>https://jul-carras.github.io/2018/08/01/test-ab/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/07/30/2018-07-30-first/</loc>
+    <loc>https://jul-carras.github.io/2018/07/30/2018-07-30-first/</loc>
     <lastmod>2018-07-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/a/b-testing/</loc>
+    <loc>https://jul-carras.github.io/tags/a/b-testing/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/blogging/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/data-collection/</loc>
-    <lastmod>2018-09-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/data-science/</loc>
+    <loc>https://jul-carras.github.io/tags/blogdown/</loc>
     <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/directories/</loc>
+    <loc>https://jul-carras.github.io/tags/blogging/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/tags/data-collection/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/ggmap/</loc>
+    <loc>https://jul-carras.github.io/tags/data-science/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/tags/directories/</loc>
+    <lastmod>2018-09-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/tags/ggmap/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/tags/gmapdistance/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/tags/google-maps-api/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/google-maps-api/</loc>
-    <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+    <loc>https://jul-carras.github.io/tags/googlemaps-api/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/hypothesis-testing/</loc>
+    <loc>https://jul-carras.github.io/tags/hypothesis-testing/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2018-09-10T00:00:00+00:00</lastmod>
+    <loc>https://jul-carras.github.io/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/page/about/</loc>
+    <loc>https://jul-carras.github.io/page/about/</loc>
   </url>
   
   <url>
-    <loc>/tags/mapping/</loc>
-    <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+    <loc>https://jul-carras.github.io/tags/mapping/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/optimization/</loc>
+    <loc>https://jul-carras.github.io/tags/optimization/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/page/</loc>
+    <loc>https://jul-carras.github.io/page/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/pdftools/</loc>
+    <loc>https://jul-carras.github.io/tags/pdftools/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>https://jul-carras.github.io/post/</loc>
+    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jul-carras.github.io/tags/rebus/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/rebus/</loc>
-    <lastmod>2018-09-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jul-carras.github.io/page/resume/</loc>
   </url>
   
   <url>
-    <loc>/page/resume/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/rvest/</loc>
+    <loc>https://jul-carras.github.io/tags/rvest/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/selector-gadget/</loc>
+    <loc>https://jul-carras.github.io/tags/selector-gadget/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://jul-carras.github.io/tags/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/tidyverse/</loc>
+    <loc>https://jul-carras.github.io/tags/tidyverse/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/web-scraping/</loc>
+    <loc>https://jul-carras.github.io/tags/web-scraping/</loc>
     <lastmod>2018-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/writing-functions/</loc>
+    <loc>https://jul-carras.github.io/tags/writing-functions/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

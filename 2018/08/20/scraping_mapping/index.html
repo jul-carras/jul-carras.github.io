@@ -15,8 +15,8 @@ With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool,
 <meta property="og:description" content="Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.
 With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/2018/08/20/scraping_mapping/">
-        <link rel="stylesheet" href="/dist/styles.css">
+<meta property="og:url" content="https://jul-carras.github.io/2018/08/20/scraping_mapping/">
+        <link rel="stylesheet" href="https://jul-carras.github.io/dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         
@@ -45,10 +45,10 @@ if (!doNotTrack) {
                     <div class="site-title-wrapper">
                         
                             <h1 class="site-title">
-                                <a title="Julian Carrasquillo" href="/">Julian Carrasquillo</a>
+                                <a title="Julian Carrasquillo" href="https://jul-carras.github.io/">Julian Carrasquillo</a>
                             </h1>
                         
-                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        <a class="button-square" href="https://jul-carras.github.io/index.xml"><i class="fa fa-rss"></i></a>
                         
                             <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/juliancarras">
                                 <i class="fa fa-twitter"></i>
@@ -142,22 +142,22 @@ dillards &lt;- data.frame(&quot;address&quot; = dillards)
 
 # See first 15 entries
 head(dillards, n = 15)</code></pre>
-<pre><code>##                                                  address
-## 1         1627 Opelika Rd Suite 16 Auburn, Alabama 36830
-## 2           3000 Eastdale Mall Montgomery, Alabama 36117
-## 3         900 Commons Dr Suite 100 Dothan, Alabama 36303
-## 4    301 Coxcreek Pkwy Ste #1100 Florence, Alabama 35630
-## 5     2801 Memorial Parkway Sw Huntsville, Alabama 35801
-## 6                3300 Bel Air Mall Mobile, Alabama 36606
-## 7   10101 Eastern Shore Blvd Spanish Fort, Alabama 36527
-## 8       7310 Eastchase Parkway Montgomery, Alabama 36117
-## 9                  700 Quintard Dr Oxford, Alabama 36203
-## 10            1435 West Southern Ave Mesa, Arizona 85202
-## 11       10002 Metro Parkway East Phoenix, Arizona 85051
-## 12      1117 N. Promenade Pky Casa Grande, Arizona 85194
-## 13     4700 Us Highway 89 North Flagstaff, Arizona 86004
-## 14     1461 South Yuma Palms Parkway Yuma, Arizona 85365
-## 15 5501 Highway 95 North Lake Havasu City, Arizona 86404</code></pre>
+<pre><code>##                                                 address
+## 1         1627 Opelika Rd Suite 16Auburn, Alabama 36830
+## 2           3000 Eastdale MallMontgomery, Alabama 36117
+## 3         900 Commons Dr Suite 100Dothan, Alabama 36303
+## 4    301 Coxcreek Pkwy Ste #1100Florence, Alabama 35630
+## 5     2801 Memorial Parkway SwHuntsville, Alabama 35801
+## 6                3300 Bel Air MallMobile, Alabama 36606
+## 7   10101 Eastern Shore BlvdSpanish Fort, Alabama 36527
+## 8       7310 Eastchase ParkwayMontgomery, Alabama 36117
+## 9                  700 Quintard DrOxford, Alabama 36203
+## 10            1435 West Southern AveMesa, Arizona 85202
+## 11       10002 Metro Parkway EastPhoenix, Arizona 85051
+## 12      1117 N. Promenade PkyCasa Grande, Arizona 85194
+## 13     4700 Us Highway 89 NorthFlagstaff, Arizona 86004
+## 14     1461 South Yuma Palms ParkwayYuma, Arizona 85365
+## 15 5501 Highway 95 NorthLake Havasu City, Arizona 86404</code></pre>
 <p><br><br></p>
 </div>
 <div id="combining-with-other-data" class="section level2">
@@ -182,22 +182,22 @@ all_stores &lt;- bind_rows(&quot;Dillard&#39;s&quot; = dillards,
                         .id = &quot;retailer&quot;)
 
 head(all_stores, n = 15)</code></pre>
-<pre><code>##     retailer                                               address
-## 1  Dillard&#39;s        1627 Opelika Rd Suite 16 Auburn, Alabama 36830
-## 2  Dillard&#39;s          3000 Eastdale Mall Montgomery, Alabama 36117
-## 3  Dillard&#39;s        900 Commons Dr Suite 100 Dothan, Alabama 36303
-## 4  Dillard&#39;s   301 Coxcreek Pkwy Ste #1100 Florence, Alabama 35630
-## 5  Dillard&#39;s    2801 Memorial Parkway Sw Huntsville, Alabama 35801
-## 6  Dillard&#39;s               3300 Bel Air Mall Mobile, Alabama 36606
-## 7  Dillard&#39;s  10101 Eastern Shore Blvd Spanish Fort, Alabama 36527
-## 8  Dillard&#39;s      7310 Eastchase Parkway Montgomery, Alabama 36117
-## 9  Dillard&#39;s                 700 Quintard Dr Oxford, Alabama 36203
-## 10 Dillard&#39;s            1435 West Southern Ave Mesa, Arizona 85202
-## 11 Dillard&#39;s       10002 Metro Parkway East Phoenix, Arizona 85051
-## 12 Dillard&#39;s      1117 N. Promenade Pky Casa Grande, Arizona 85194
-## 13 Dillard&#39;s     4700 Us Highway 89 North Flagstaff, Arizona 86004
-## 14 Dillard&#39;s     1461 South Yuma Palms Parkway Yuma, Arizona 85365
-## 15 Dillard&#39;s 5501 Highway 95 North Lake Havasu City, Arizona 86404</code></pre>
+<pre><code>##     retailer                                              address
+## 1  Dillard&#39;s        1627 Opelika Rd Suite 16Auburn, Alabama 36830
+## 2  Dillard&#39;s          3000 Eastdale MallMontgomery, Alabama 36117
+## 3  Dillard&#39;s        900 Commons Dr Suite 100Dothan, Alabama 36303
+## 4  Dillard&#39;s   301 Coxcreek Pkwy Ste #1100Florence, Alabama 35630
+## 5  Dillard&#39;s    2801 Memorial Parkway SwHuntsville, Alabama 35801
+## 6  Dillard&#39;s               3300 Bel Air MallMobile, Alabama 36606
+## 7  Dillard&#39;s  10101 Eastern Shore BlvdSpanish Fort, Alabama 36527
+## 8  Dillard&#39;s      7310 Eastchase ParkwayMontgomery, Alabama 36117
+## 9  Dillard&#39;s                 700 Quintard DrOxford, Alabama 36203
+## 10 Dillard&#39;s            1435 West Southern AveMesa, Arizona 85202
+## 11 Dillard&#39;s       10002 Metro Parkway EastPhoenix, Arizona 85051
+## 12 Dillard&#39;s      1117 N. Promenade PkyCasa Grande, Arizona 85194
+## 13 Dillard&#39;s     4700 Us Highway 89 NorthFlagstaff, Arizona 86004
+## 14 Dillard&#39;s     1461 South Yuma Palms ParkwayYuma, Arizona 85365
+## 15 Dillard&#39;s 5501 Highway 95 NorthLake Havasu City, Arizona 86404</code></pre>
 <p><br><br></p>
 </div>
 <div id="mapping-our-store-locations" class="section level2">
@@ -222,6 +222,9 @@ ggmap(mapped_region)</code></pre>
 <pre class="r"><code>all_stores_with_coord &lt;- all_stores %&gt;%
   mutate(lon = geocode(address, source = &quot;google&quot;)$lon,
          lat = geocode(address, source = &quot;google&quot;)$lat)</code></pre>
+<p>UPDATE: Turns out there is a <code>mutate_geocode</code> function that will append the <code>lon</code> and <code>lat</code> columns to your dataset!</p>
+<pre class="r"><code>all_stores_with_coord &lt;- all_stores %&gt;%
+  mutate_geocode(address)</code></pre>
 <p>This portion of code takes some time, depending on how many queries are ran. This becomes cumbersome if you need to rerun the script for updates to your analysis. To streamline, I wrote the dataframe with coordinates to a local .csv file.</p>
 <pre class="r"><code>all_stores_with_coord %&gt;% write_csv(&quot;stores_with_coords.csv&quot;)</code></pre>
 <p>Now, for stand alone analysis, the .csv can be read in and runs much faster.</p>
@@ -235,7 +238,7 @@ ggmap(mapped_region)</code></pre>
         axis.ticks = element_blank(),
         legend.position = &quot;top&quot;,
         legend.title = element_blank())</code></pre>
-<p><img src="/post/2018-08-17-map/scraping_mapping_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/post/2018-08-17-map/scraping_mapping_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <ul>
 <li>We can see that Dillard’s has a strong presence in the southern part of the country with some additional, uncontested territory in the Rockies region.</li>
 <li>Store X has more of a hold in the midwest while Store Y is covering the west coast.</li>
@@ -272,7 +275,7 @@ ggmap(mapped_region)</code></pre>
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fscraping_mapping%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=Web%20Scraping%20and%20Mapping&url=https%3a%2f%2fjul-carras.github.io%2f2018%2f08%2f20%2fscraping_mapping%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -283,7 +286,7 @@ ggmap(mapped_region)</code></pre>
 
         
         
-            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Web%20Scraping%20and%20Mapping&url=%2f2018%2f08%2f20%2fscraping_mapping%2f&summary="
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Web%20Scraping%20and%20Mapping&url=https%3a%2f%2fjul-carras.github.io%2f2018%2f08%2f20%2fscraping_mapping%2f&summary="
                onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
                <i class="fa fa-linkedin"></i>
                <span class="hidden">LinkedIn</span>
@@ -307,7 +310,7 @@ ggmap(mapped_region)</code></pre>
             <div class="container">
                 <div class="site-title-wrapper">
                     <h1 class="site-title">
-                        <a title="Julian Carrasquillo" href="/">Julian Carrasquillo</a>
+                        <a title="Julian Carrasquillo" href="https://jul-carras.github.io/">Julian Carrasquillo</a>
                     </h1>
                     <a class="button-square button-jump-top js-jump-top" href="#">
                         <i class="fa fa-angle-up"></i>
@@ -315,7 +318,7 @@ ggmap(mapped_region)</code></pre>
                 </div>
 
                 <p class="footer-copyright">
-                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
                 </p>
                 <p class="footer-copyright">
                     <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
@@ -324,14 +327,14 @@ ggmap(mapped_region)</code></pre>
             </div>
         </footer>
 
-        <script src="/js/jquery-1.11.3.min.js"></script>
-        <script src="/js/jquery.fitvids.js"></script>
+        <script src="https://jul-carras.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://jul-carras.github.io/js/jquery.fitvids.js"></script>
         
         
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         
         
-        <script src="/js/scripts.js"></script>
+        <script src="https://jul-carras.github.io/js/scripts.js"></script>
     </body>
 </html>
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gmapdistance on Julian Carrasquillo</title>
+    <link>https://jul-carras.github.io/tags/gmapdistance/</link>
+    <description>Recent content in Gmapdistance on Julian Carrasquillo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>My Name</copyright>
+    <lastBuildDate>Sat, 19 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jul-carras.github.io/tags/gmapdistance/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Distances Between ggmap Coordinates using gmapdistance</title>
+      <link>https://jul-carras.github.io/2019/01/19/ggmap_distances/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/2019/01/19/ggmap_distances/</guid>
+      <description>Hi there! It’s been a while! The semester finally ended, so I’ve got some extra time until the next batch of classes start.
+Here is a next-step analysis jumping off of the web scraping and mapping post from a couple of months back. Showing points on a map is great for big picture visualizations, but what if we need to know a little more? Maybe we’re interested in relationships between points.</description>
+    </item>
+    
+  </channel>
+</rss>
