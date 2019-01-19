@@ -158,10 +158,10 @@ set.api.key(google_api_key)</code></pre>
               destination = &quot;holland+mi&quot;,
               mode = &quot;driving&quot;)</code></pre>
 <pre><code>## $Time
-## [1] 2135
+## [1] 2120
 ## 
 ## $Distance
-## [1] 45573
+## [1] 48179
 ## 
 ## $Status
 ## [1] &quot;OK&quot;</code></pre>
@@ -190,13 +190,13 @@ vector_inputs$Time %&gt;% kable()</code></pre>
 <tr class="odd">
 <td align="left">inwood+manhattan</td>
 <td align="right">1980</td>
-<td align="right">42385</td>
+<td align="right">42661</td>
 <td align="right">14310</td>
 </tr>
 <tr class="even">
 <td align="left">grand+rapids+mi</td>
 <td align="right">41208</td>
-<td align="right">2135</td>
+<td align="right">2120</td>
 <td align="right">35875</td>
 </tr>
 <tr class="odd">
@@ -216,7 +216,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
                            destination = destinations,
                            mode = &quot;driving&quot;)})</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.48    0.03   14.40</code></pre>
+##    0.48    0.07   16.24</code></pre>
 <p>Run time hovers around 10 - 12 seconds. From my experience, a retrieval will be timed at about 1 second a piece. It’s important to hone in on your interested list before running any vectors of locations. There is a <code>combinations</code> argument that will compute either all combinations (“all”) or just corresponding entries (“pairwise”). This is useful if you’ve got specific pairs of locations you want to investigate.</p>
 </div>
 <div id="other-arguments-for-tuning" class="section level2">
@@ -335,8 +335,8 @@ get_distances &lt;- function(..state, group_1, group_2){
 ## 1    inwood+manhattan Time.battery+park+ny  1980           33
 ## 2     grand+rapids+mi Time.battery+park+ny 41208          687
 ## 3 washington+memorial Time.battery+park+ny 13605          227
-## 4    inwood+manhattan      Time.holland+mi 42385          706
-## 5     grand+rapids+mi      Time.holland+mi  2135           36
+## 4    inwood+manhattan      Time.holland+mi 42661          711
+## 5     grand+rapids+mi      Time.holland+mi  2120           35
 ## 6 washington+memorial      Time.holland+mi 36909          615
 ## 7    inwood+manhattan  Time.white+house+dc 14310          238
 ## 8     grand+rapids+mi  Time.white+house+dc 35875          598
