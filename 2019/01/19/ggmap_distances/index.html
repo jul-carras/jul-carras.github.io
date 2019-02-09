@@ -189,7 +189,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">inwood+manhattan</td>
-<td align="right">1834</td>
+<td align="right">1987</td>
 <td align="right">41863</td>
 <td align="right">14262</td>
 </tr>
@@ -201,7 +201,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">washington+memorial</td>
-<td align="right">13673</td>
+<td align="right">13530</td>
 <td align="right">36749</td>
 <td align="right">311</td>
 </tr>
@@ -216,7 +216,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
                            destination = destinations,
                            mode = &quot;driving&quot;)})</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.45    0.03    9.72</code></pre>
+##    0.49    0.04    9.70</code></pre>
 <p>Run time hovers around 10 - 12 seconds. From my experience, a retrieval will be timed at about 1 second a piece. It’s important to hone in on your interested list before running any vectors of locations. There is a <code>combinations</code> argument that will compute either all combinations (“all”) or just corresponding entries (“pairwise”). This is useful if you’ve got specific pairs of locations you want to investigate.</p>
 </div>
 <div id="other-arguments-for-tuning" class="section level2">
@@ -334,9 +334,9 @@ get_distances &lt;- function(..state, group_1, group_2){
   gather(destination, time, -or) %&gt;%
   mutate(time_minutes = round(time / 60.0, digits = 0)) </code></pre>
 <pre><code>##                    or          destination  time time_minutes
-## 1    inwood+manhattan Time.battery+park+ny  1834           31
+## 1    inwood+manhattan Time.battery+park+ny  1987           33
 ## 2     grand+rapids+mi Time.battery+park+ny 40952          683
-## 3 washington+memorial Time.battery+park+ny 13673          228
+## 3 washington+memorial Time.battery+park+ny 13530          226
 ## 4    inwood+manhattan      Time.holland+mi 41863          698
 ## 5     grand+rapids+mi      Time.holland+mi  2102           35
 ## 6 washington+memorial      Time.holland+mi 36749          612
