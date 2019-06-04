@@ -161,10 +161,10 @@ set.api.key(google_api_key)</code></pre>
               destination = &quot;holland+mi&quot;,
               mode = &quot;driving&quot;)</code></pre>
 <pre><code>## $Time
-## [1] 2488
+## [1] 2328
 ## 
 ## $Distance
-## [1] 43969
+## [1] 52443
 ## 
 ## $Status
 ## [1] &quot;OK&quot;</code></pre>
@@ -192,19 +192,19 @@ vector_inputs$Time %&gt;% kable()</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">inwood+manhattan</td>
-<td align="right">1773</td>
-<td align="right">41900</td>
+<td align="right">1749</td>
+<td align="right">41922</td>
 <td align="right">14183</td>
 </tr>
 <tr class="even">
 <td align="left">grand+rapids+mi</td>
-<td align="right">40743</td>
+<td align="right">40708</td>
 <td align="right">2328</td>
 <td align="right">35551</td>
 </tr>
 <tr class="odd">
 <td align="left">washington+memorial</td>
-<td align="right">13502</td>
+<td align="right">13886</td>
 <td align="right">36844</td>
 <td align="right">310</td>
 </tr>
@@ -219,7 +219,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
                            destination = destinations,
                            mode = &quot;driving&quot;)})</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.11    0.02    8.28</code></pre>
+##    0.09    0.01    8.72</code></pre>
 <p>Run time hovers around 10 - 12 seconds. From my experience, a retrieval will be timed at about 1 second a piece. It’s important to hone in on your interested list before running any vectors of locations. There is a <code>combinations</code> argument that will compute either all combinations (“all”) or just corresponding entries (“pairwise”). This is useful if you’ve got specific pairs of locations you want to investigate.</p>
 </div>
 <div id="other-arguments-for-tuning" class="section level2">
@@ -337,10 +337,10 @@ get_distances &lt;- function(..state, group_1, group_2){
   gather(destination, time, -or) %&gt;%
   mutate(time_minutes = round(time / 60.0, digits = 0)) </code></pre>
 <pre><code>##                    or          destination  time time_minutes
-## 1    inwood+manhattan Time.battery+park+ny  1773           30
-## 2     grand+rapids+mi Time.battery+park+ny 40743          679
-## 3 washington+memorial Time.battery+park+ny 13502          225
-## 4    inwood+manhattan      Time.holland+mi 41900          698
+## 1    inwood+manhattan Time.battery+park+ny  1749           29
+## 2     grand+rapids+mi Time.battery+park+ny 40708          678
+## 3 washington+memorial Time.battery+park+ny 13886          231
+## 4    inwood+manhattan      Time.holland+mi 41922          699
 ## 5     grand+rapids+mi      Time.holland+mi  2328           39
 ## 6 washington+memorial      Time.holland+mi 36844          614
 ## 7    inwood+manhattan  Time.white+house+dc 14183          236

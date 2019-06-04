@@ -121,7 +121,7 @@ Network visualization offers an efficient way to see relationships between entit
 <div id="introduction" class="section level2">
 <h2>INTRODUCTION</h2>
 <p>In order to gain the insight that peanut butter and jelly, milk and eggs, or sliced bread and cold cuts go together at a more efficient scale, we can use large datasets of transactions and find rules via Association Mining [2]. From this practice, we walk away with a set of rules in an if-then structure. If this item is purchased, then we feel pretty good that the next item was part of the transaction, too.</p>
-<p><img src="/post/2019-06-103-network/diapers_beer.png" /></p>
+<p><img src="/post/2019-06-03-network/diapers_beer.png" /></p>
 <p>It’s important to note that any number of items can lead to another. For example, swimming trunks AND a tank top can have a strong association with sunscreen. We looked at wholesale Chaco Footwear sales for the Spring 2019 season. The data started at ~100 thousand rows for our business-to-business, or B2B sales. Said differently, we looked at product purchased by retail partners for their own stores. The purchase groups landed in 2 timeframes – preseason and in-season for Spring 2019, all at a daily cadence. To decrease noise, orders were combined at monthly intervals. Rule development used minimum support, confidence, and lift levels. With the many rules that were possible, interactive dashboard provided an avenue of exploration that allows users to see various product collections, rankings of rules by different metrics, and a tuning board for the algorithm.</p>
 </div>
 <div id="methods" class="section level2">
@@ -154,11 +154,11 @@ The data needed to be grouped into largest buckets to handle a 2 main sources of
                                                 conf=0.8,
                                                 maxlen=5))</code></pre>
 <p>Support and Confidence are the backbone of the mining process and they consist of probability formulas [2]. Support represents the ratio of transactions that contain an item set to the total transactions. So, with an item set X in a data set of N transactions,</p>
-<p><img src="/post/2019-06-103-network/support_x.png" /></p>
+<p><img src="/post/2019-06-03-network/support_x.png" /></p>
 <p>With an association rule A -&gt; B,</p>
-<p><img src="/post/2019-06-103-network/support_ab.png" /></p>
+<p><img src="/post/2019-06-03-network/support_ab.png" /></p>
 <p>Confidence represents the ratio between transactions that contain an item set to transactions that contain only 1 of the items. Said in probability terms, given item A is in your cart, what is the probability of purchasing item B?</p>
-<p><img src="/post/2019-06-103-network/confidence.png" /></p>
+<p><img src="/post/2019-06-03-network/confidence.png" /></p>
 <p>Generating association rules can be computationally expensive because it is a full look of a database. A rule is generated for each item set, which can become a combinatorial nightmare [1]. To prune the number of rules presented, minimum support and confidence levels are set. To further decrease the number of total calculations, the apriori algorithm is used. It states that any subset of a frequent itemset must also be frequent. Said another way, if an itemset is found to be infrequent, meaning it fails the minimum support or confidence levels provided, no set consisting of that item will be tested [2].</p>
 <p><img src="/post/2019-06-103-network/apriori.png" /></p>
 <p>In the above image, item set AB was found to be infrequent. This leads to every upstream item set containing A and B – ABC, ABD, ABCD - to be excluded from the analysis.
@@ -184,7 +184,7 @@ visNetwork(
   visEdges( arrows = &quot;to&quot; ) %&gt;%
   visOptions( highlightNearest = T )</code></pre>
 <p>Various attributes of the graph are set up in this step including labels, node shapes, images, and graph options. In addition to our product SKUs, the association rules are represented as nodes. This assists in handling relationships where multiple products make a set that indicate another item.</p>
-<p><img src="/post/2019-06-103-network/graph.png" /></p>
+<p><img src="/post/2019-06-03-network/graph.png" /></p>
 <p>In the above graph, we see our product nodes represented as the shoe image with the association rule shown as an orange diamond.</p>
 </div>
 </div>
@@ -193,6 +193,124 @@ visNetwork(
 <p>The resulting Shiny app offers an ability to explore the rules, instead of seeing them all printed in a table or showing up as a bowl of spaghetti on the screen. Touching on Schneiderman’s mantra, the user can see the full graph, zoom in on specific portions, and find specific data by clicking on the nodes.
 The user is also able to generate new graphs using various levels that control the number of associations to show and how they are ranked, categories of product, and parameters to tune.</p>
 <p>An interesting outcome was discovered with respect to the style ZCloud X in Askew Angora. It is ranked 7th overall in terms of revenue, but is consistently in the middle of this network graph. Though not the strongest monetary performer, this style still consistently appears in shopping carts and can support most of the core functions at the brand. Sales can push this as a crowd pleaser – the type of style that will be seen in almost any store. Our partners would not want to miss the boat on this. Marketing can place the style in more content. If we know it’s typically in a cart, images &amp; videos can be more relevant. Product can investigate and see what these associated styles have in common. Why is this particular assortment resonating with our buyers?</p>
+<div id="folding-into-a-shiny-app" class="section level3">
+<h3>FOLDING INTO A SHINY APP</h3>
+<p>The <code>shiny</code> package allowed us to provide an interactive dashboard where any user can modify algorithm parameters and see alternative outcomes.</p>
+<pre class="r"><code># Define UI
+ui &lt;- fluidPage(theme = &quot;style.css&quot;,
+    # Application title
+    titlePanel(h3(&quot;Chaco - Wholesale Basket Analysis&quot;)),
+    # Sidebar with a inputs 
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput(&quot;rules&quot;,
+                        &quot;Select Number of Associations to Show&quot;,
+                        min = 5,
+                        max = 25,
+                        value = 10),
+            h5(&quot;Associations represented with orange diamonds&quot;),
+            radioButtons(&quot;ranker&quot;,
+                         &quot;Select Metric to Sort Associations:&quot;,
+                         choices = list(&quot;support&quot;, &quot;confidence&quot;, &quot;lift&quot;)),
+            selectInput(&quot;product_mix&quot;,
+                        &quot;Select Product Mix to Display:&quot;,
+                        choices = list(&quot;Men&#39;s &amp; Women&#39;s&quot;,
+                                       &quot;Kids&quot;,
+                                       &quot;Accessories&quot;,
+                                       &quot;Total&quot;),
+                        selected = &quot;Men&#39;s &amp; Women&#39;s&quot;),
+            h4(&quot;Tune Apriori Algorithm Parameters:&quot;),
+            sliderInput(&quot;support&quot;,
+                        &quot;Support:&quot;,
+                        min = 0.01,
+                        max = 0.10,
+                        value = .01,
+                        step = .01),
+            h5(&quot;Support Item1 =&gt; Item2&quot;),
+            h5(&quot;ratio of transactions with Item1+Item2 to total transactions&quot;),
+            h5(&quot;&quot;),
+            sliderInput(&quot;confidence&quot;,
+                        &quot;Confidence:&quot;,
+                        min = .7,
+                        max = 1,
+                        value = .8,
+                        step = .1),
+            h5(&quot;Confidence Item1 =&gt; Item2&quot;),
+            h5(&quot;ratio of transactions with Item1+Item2 to transactions with item1 only&quot;)
+
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+            visNetworkOutput(&quot;network_graph&quot;, height = &quot;600px&quot;)
+        )
+    )
+)</code></pre>
+<p>The server function was carried all of the code in a <code>RenderVisNetwork</code> function to capture all reactive elements. The reran the network code everytime new attributes were provided.</p>
+<pre class="r"><code>server &lt;- function(input, output) {
+    output$network_graph &lt;- renderVisNetwork({
+        
+        orders &lt;- read_feather(&quot;orders.feather&quot;)
+        
+        #Set genders based on input from user
+        genders &lt;- case_when(input$product_mix == &quot;Men&#39;s &amp; Women&#39;s&quot; ~ c(&quot;Men&#39;s&quot;, &quot;Women&#39;s&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;),
+                             input$product_mix == &quot;Kids&quot; ~ c(&quot;KIDS&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;),
+                             input$product_mix == &quot;Accessories&quot; ~ c(&quot;NEC&quot;, &quot;Unisex&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;),
+                             input$product_mix == &quot;Total&quot; ~ c(&quot;Men&#39;s&quot;, &quot;Women&#39;s&quot;, &quot;KIDS&quot;, &quot;NEC&quot;, &quot;Unisex&quot;))
+        
+        # filter orders and write as .csv to be picked up by read.transactions
+        orders %&gt;%
+            filter(gender %in% genders) %&gt;%
+            select(id, desc) %&gt;%
+            write_csv(&quot;orders.csv&quot;)
+        
+        
+        tr &lt;- arules::read.transactions(&quot;orders.csv&quot;, 
+                                        format = &quot;single&quot;, 
+                                        sep = &quot;,&quot;, 
+                                        header = TRUE, cols = c(1, 2), 
+                                        quote =&quot;&quot;)
+        # support, conf, maxlen as options
+        order_rules &lt;- arules::apriori(tr, 
+                                       parameter = list(supp=input$support, 
+                                                        conf=as.double(input$confidence),
+                                                        maxlen=5))
+        # n, by as an option
+        top_rules &lt;- head(order_rules, n = input$rules, by = input$ranker)
+     
+        # place into an ig item to pass off to igraph package
+        top_plot &lt;- plot(top_rules, method=&quot;graph&quot;, control=list(type=&quot;items&quot;))
+        # cleaning up attributes
+        labels &lt;- vertex_attr(top_plot)$label
+        top_plot &lt;- set_vertex_attr(top_plot, &quot;gender&quot;, 
+                                    value = str_extract(labels, &quot;Women&#39;s|Men&#39;s|KIDS&quot;))
+        top_plot &lt;- set_vertex_attr(top_plot, &quot;label&quot;, 
+                                    value = str_replace(labels, &quot;Women&#39;s|Men&#39;s|KIDS&quot;, &quot;&quot;))
+        top_plot &lt;- set_vertex_attr(top_plot, &quot;image_src&quot;, 
+                                    value = paste0(&quot;http://apphub.wwwinc.com/images/getProductImage/&quot;,
+                                        str_extract(labels, &quot;^(?:J|JC|JCH)[0-9]{6}&quot;),
+                                        &quot;?type=2&amp;size=250&quot;))
+    
+        
+        # Set as dataframe for easier extraction to visNetwork
+        ig_df &lt;- get.data.frame(top_plot, what = &quot;both&quot;)
+    
+        visNetwork(
+            nodes = data.frame(
+                id = ig_df$vertices$name,
+                value = ig_df$vertices$lift, # could change to lift or confidence
+                title = if_else(ig_df$vertices$label == &quot;&quot;,ig_df$vertices$name, ig_df$vertices$label),
+                color.background = if_else(ig_df$vertices$label == &quot;&quot;, &quot;#F65024&quot;, &quot;lightblue&quot;),
+                shape = if_else(ig_df$vertices$label == &quot;&quot;, &quot;diamond&quot;, &quot;image&quot;),
+                ig_df$vertices,
+                image = ig_df$vertices$image_src,
+                mass = 3), 
+            edges = ig_df$edges) %&gt;%
+            visEdges( arrows = &quot;to&quot;, color = &quot;#76CCDC&quot; ) %&gt;%
+            visOptions( highlightNearest = T )
+    })
+}</code></pre>
+</div>
 <div id="next-steps" class="section level3">
 <h3>NEXT STEPS</h3>
 <p>We hope to find gather more data points as the season progresses. Because of the constant turn over of product colors (linked to SKU) each year, it is difficult to follow styles over multiple seasons. A solution is to report on silhouettes, which more-or-less stays constant through the years.</p>
