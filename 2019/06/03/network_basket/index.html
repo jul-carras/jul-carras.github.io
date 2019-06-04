@@ -160,7 +160,7 @@ The data needed to be grouped into largest buckets to handle a 2 main sources of
 <p>Confidence represents the ratio between transactions that contain an item set to transactions that contain only 1 of the items. Said in probability terms, given item A is in your cart, what is the probability of purchasing item B?</p>
 <p><img src="/post/2019-06-03-network/confidence.png" /></p>
 <p>Generating association rules can be computationally expensive because it is a full look of a database. A rule is generated for each item set, which can become a combinatorial nightmare [1]. To prune the number of rules presented, minimum support and confidence levels are set. To further decrease the number of total calculations, the apriori algorithm is used. It states that any subset of a frequent itemset must also be frequent. Said another way, if an itemset is found to be infrequent, meaning it fails the minimum support or confidence levels provided, no set consisting of that item will be tested [2].</p>
-<p><img src="/post/2019-06-103-network/apriori.png" /></p>
+<p><img src="/post/2019-06-03-network/apriori.png" /></p>
 <p>In the above image, item set AB was found to be infrequent. This leads to every upstream item set containing A and B – ABC, ABD, ABCD - to be excluded from the analysis.
 After selecting for top rules based on either support, confidence or lift, the resulting graph is converted into an <code>igraph</code> object and passed to the <code>VisNetwork</code> package.</p>
 <pre class="r"><code># Take top rules by support
@@ -187,12 +187,6 @@ visNetwork(
 <p><img src="/post/2019-06-03-network/graph.png" /></p>
 <p>In the above graph, we see our product nodes represented as the shoe image with the association rule shown as an orange diamond.</p>
 </div>
-</div>
-<div id="results" class="section level2">
-<h2>RESULTS</h2>
-<p>The resulting Shiny app offers an ability to explore the rules, instead of seeing them all printed in a table or showing up as a bowl of spaghetti on the screen. Touching on Schneiderman’s mantra, the user can see the full graph, zoom in on specific portions, and find specific data by clicking on the nodes.
-The user is also able to generate new graphs using various levels that control the number of associations to show and how they are ranked, categories of product, and parameters to tune.</p>
-<p>An interesting outcome was discovered with respect to the style ZCloud X in Askew Angora. It is ranked 7th overall in terms of revenue, but is consistently in the middle of this network graph. Though not the strongest monetary performer, this style still consistently appears in shopping carts and can support most of the core functions at the brand. Sales can push this as a crowd pleaser – the type of style that will be seen in almost any store. Our partners would not want to miss the boat on this. Marketing can place the style in more content. If we know it’s typically in a cart, images &amp; videos can be more relevant. Product can investigate and see what these associated styles have in common. Why is this particular assortment resonating with our buyers?</p>
 <div id="folding-into-a-shiny-app" class="section level3">
 <h3>FOLDING INTO A SHINY APP</h3>
 <p>The <code>shiny</code> package allowed us to provide an interactive dashboard where any user can modify algorithm parameters and see alternative outcomes.</p>
@@ -311,6 +305,12 @@ ui &lt;- fluidPage(theme = &quot;style.css&quot;,
     })
 }</code></pre>
 </div>
+</div>
+<div id="results" class="section level2">
+<h2>RESULTS</h2>
+<p>The resulting Shiny app offers an ability to explore the rules, instead of seeing them all printed in a table or showing up as a bowl of spaghetti on the screen. Touching on Schneiderman’s mantra, the user can see the full graph, zoom in on specific portions, and find specific data by clicking on the nodes.
+The user is also able to generate new graphs using various levels that control the number of associations to show and how they are ranked, categories of product, and parameters to tune.</p>
+<p>An interesting outcome was discovered with respect to the style ZCloud X in Askew Angora. It is ranked 7th overall in terms of revenue, but is consistently in the middle of this network graph. Though not the strongest monetary performer, this style still consistently appears in shopping carts and can support most of the core functions at the brand. Sales can push this as a crowd pleaser – the type of style that will be seen in almost any store. Our partners would not want to miss the boat on this. Marketing can place the style in more content. If we know it’s typically in a cart, images &amp; videos can be more relevant. Product can investigate and see what these associated styles have in common. Why is this particular assortment resonating with our buyers?</p>
 <div id="next-steps" class="section level3">
 <h3>NEXT STEPS</h3>
 <p>We hope to find gather more data points as the season progresses. Because of the constant turn over of product colors (linked to SKU) each year, it is difficult to follow styles over multiple seasons. A solution is to report on silhouettes, which more-or-less stays constant through the years.</p>
