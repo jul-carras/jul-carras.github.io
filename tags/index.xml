@@ -7,67 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
-    <lastBuildDate>Wed, 01 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jul-carras.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>A/B Testing</title>
-      <link>https://jul-carras.github.io/tags/a/b-testing/</link>
-      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <title>basket analysis</title>
+      <link>https://jul-carras.github.io/tags/basket-analysis/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/tags/a/b-testing/</guid>
+      <guid>https://jul-carras.github.io/tags/basket-analysis/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Blogdown</title>
-      <link>https://jul-carras.github.io/tags/blogdown/</link>
-      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      <title>network graph</title>
+      <link>https://jul-carras.github.io/tags/network-graph/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/tags/blogdown/</guid>
+      <guid>https://jul-carras.github.io/tags/network-graph/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Blogging</title>
-      <link>https://jul-carras.github.io/tags/blogging/</link>
-      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      <title>shiny</title>
+      <link>https://jul-carras.github.io/tags/shiny/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/tags/blogging/</guid>
+      <guid>https://jul-carras.github.io/tags/shiny/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Data Collection</title>
-      <link>https://jul-carras.github.io/tags/data-collection/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      <title>visnetwork</title>
+      <link>https://jul-carras.github.io/tags/visnetwork/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/tags/data-collection/</guid>
+      <guid>https://jul-carras.github.io/tags/visnetwork/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Data Science</title>
-      <link>https://jul-carras.github.io/tags/data-science/</link>
-      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://jul-carras.github.io/tags/data-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Directories</title>
-      <link>https://jul-carras.github.io/tags/directories/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://jul-carras.github.io/tags/directories/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ggmap</title>
+      <title>ggmap</title>
       <link>https://jul-carras.github.io/tags/ggmap/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -76,7 +58,7 @@
     </item>
     
     <item>
-      <title>Gmapdistance</title>
+      <title>gmapdistance</title>
       <link>https://jul-carras.github.io/tags/gmapdistance/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -85,16 +67,7 @@
     </item>
     
     <item>
-      <title>Google Maps Api</title>
-      <link>https://jul-carras.github.io/tags/google-maps-api/</link>
-      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://jul-carras.github.io/tags/google-maps-api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Googlemaps Api</title>
+      <title>googlemaps api</title>
       <link>https://jul-carras.github.io/tags/googlemaps-api/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -103,16 +76,7 @@
     </item>
     
     <item>
-      <title>Hypothesis Testing</title>
-      <link>https://jul-carras.github.io/tags/hypothesis-testing/</link>
-      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://jul-carras.github.io/tags/hypothesis-testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mapping</title>
+      <title>mapping</title>
       <link>https://jul-carras.github.io/tags/mapping/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -121,16 +85,25 @@
     </item>
     
     <item>
-      <title>Optimization</title>
-      <link>https://jul-carras.github.io/tags/optimization/</link>
-      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <title>data collection</title>
+      <link>https://jul-carras.github.io/tags/data-collection/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/tags/optimization/</guid>
+      <guid>https://jul-carras.github.io/tags/data-collection/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Pdftools</title>
+      <title>directories</title>
+      <link>https://jul-carras.github.io/tags/directories/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/directories/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pdftools</title>
       <link>https://jul-carras.github.io/tags/pdftools/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -139,7 +112,7 @@
     </item>
     
     <item>
-      <title>Rebus</title>
+      <title>rebus</title>
       <link>https://jul-carras.github.io/tags/rebus/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -148,25 +121,7 @@
     </item>
     
     <item>
-      <title>Rvest</title>
-      <link>https://jul-carras.github.io/tags/rvest/</link>
-      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://jul-carras.github.io/tags/rvest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Selector Gadget</title>
-      <link>https://jul-carras.github.io/tags/selector-gadget/</link>
-      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://jul-carras.github.io/tags/selector-gadget/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tidyverse</title>
+      <title>tidyverse</title>
       <link>https://jul-carras.github.io/tags/tidyverse/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -175,7 +130,43 @@
     </item>
     
     <item>
-      <title>Web Scraping</title>
+      <title>writing functions</title>
+      <link>https://jul-carras.github.io/tags/writing-functions/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/writing-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>google maps API</title>
+      <link>https://jul-carras.github.io/tags/google-maps-api/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/google-maps-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rvest</title>
+      <link>https://jul-carras.github.io/tags/rvest/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/rvest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>selector gadget</title>
+      <link>https://jul-carras.github.io/tags/selector-gadget/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/selector-gadget/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web scraping</title>
       <link>https://jul-carras.github.io/tags/web-scraping/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
       
@@ -184,11 +175,56 @@
     </item>
     
     <item>
-      <title>Writing Functions</title>
-      <link>https://jul-carras.github.io/tags/writing-functions/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      <title>a/b testing</title>
+      <link>https://jul-carras.github.io/tags/a/b-testing/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jul-carras.github.io/tags/writing-functions/</guid>
+      <guid>https://jul-carras.github.io/tags/a/b-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hypothesis testing</title>
+      <link>https://jul-carras.github.io/tags/hypothesis-testing/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/hypothesis-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>https://jul-carras.github.io/tags/optimization/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blogdown</title>
+      <link>https://jul-carras.github.io/tags/blogdown/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/blogdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blogging</title>
+      <link>https://jul-carras.github.io/tags/blogging/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/blogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data science</title>
+      <link>https://jul-carras.github.io/tags/data-science/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/tags/data-science/</guid>
       <description></description>
     </item>
     

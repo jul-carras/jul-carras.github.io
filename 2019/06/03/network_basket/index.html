@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Network Visualization in R &middot; Julian Carrasquillo</title>
+        <meta name="description" content="It’s been some time since the last post! Classes picked up and we’re in the prime selling season at office, so I let the blog simmer. The below is the write up for one of my courses this past semester - Information Visualization. Images come from the awesome article by Hafsa Jabeen on basket analysis. You can find the associated shiny app here. Setting this up is deserving of its own write up, so I’ll get to it another time.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.55.6" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Network Visualization in R">
+<meta property="og:description" content="It’s been some time since the last post! Classes picked up and we’re in the prime selling season at office, so I let the blog simmer. The below is the write up for one of my courses this past semester - Information Visualization. Images come from the awesome article by Hafsa Jabeen on basket analysis. You can find the associated shiny app here. Setting this up is deserving of its own write up, so I’ll get to it another time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jul-carras.github.io/2019/06/03/network_basket/">
+        <link rel="stylesheet" href="https://jul-carras.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+    </head>
+    <body>
+        
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'XXX', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Julian Carrasquillo" href="https://jul-carras.github.io/">Julian Carrasquillo</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://jul-carras.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/juliancarras">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/juliancarrasquillo/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:jul.carras@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/page/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Blog" href="/post/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Resume" href="/page/resume">Resume</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Network Visualization in R</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-06-03" itemprop="datePublished">Jun 3, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://twitter.com/juliancarras" itemprop="url" rel="author">Julian Carrasquillo</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+
+<p>It’s been some time since the last post! Classes picked up and we’re in the prime selling season at office, so I let the blog simmer. The below is the write up for one of my courses this past semester - Information Visualization. Images come from the awesome <a href="https://www.datacamp.com/community/tutorials/market-basket-analysis-r">article by Hafsa Jabeen</a> on basket analysis. You can find the associated shiny app <a href="https://jule.shinyapps.io/Basket-Analysis/">here</a>. Setting this up is deserving of its own write up, so I’ll get to it another time. Enjoy.</p>
+<div id="abstract" class="section level2">
+<h2>ABSTRACT</h2>
+<p>Items are often purchased together. At a pub in England, if someone gets a pint without a full dinner, it’s a safe assumption that this person will purchase chips [1]. If one sees a shopper at the supermarket with eggs, there is a good chance they’ve also got milk in their cart. These associations, based on the natural order of items purchased together, are the reason why peanut butter is on the shelf next to the jelly. Until the age of storing granular transactional data, these rules were exploited at relatively obvious, almost anecdotal levels. This phenomenon may very well lead to the familiar sections in stores – home &amp; garden, canned beverages, electronics. They are primarily a convenient form of organization, but also help drive a business to sell more.
+Network visualization offers an efficient way to see relationships between entities. Tables of relationships hold communities, magnitude of networks, hermits, and super nodes that can be simultaneously expressed using a graph. Pairing network graphs with basket analysis offers a natural view into purchase associations.</p>
+<p>We explored wholesale footwear purchasing over 4 months, and used the apriori algorithm available in the <code>arules</code> package in R. The method saves computation power by not exploring every possible combination of products, with the added benefit of efficiently removing infrequent item sets [2]. For deployment, we built an interactive Shiny app, allowing the user to tune the model parameters and chose what product groupings to see.</p>
+</div>
+<div id="introduction" class="section level2">
+<h2>INTRODUCTION</h2>
+<p>In order to gain the insight that peanut butter and jelly, milk and eggs, or sliced bread and cold cuts go together at a more efficient scale, we can use large datasets of transactions and find rules via Association Mining [2]. From this practice, we walk away with a set of rules in an if-then structure. If this item is purchased, then we feel pretty good that the next item was part of the transaction, too.</p>
+<p><img src="/post/2019-06-103-network/diapers_beer.png" /></p>
+<p>It’s important to note that any number of items can lead to another. For example, swimming trunks AND a tank top can have a strong association with sunscreen. We looked at wholesale Chaco Footwear sales for the Spring 2019 season. The data started at ~100 thousand rows for our business-to-business, or B2B sales. Said differently, we looked at product purchased by retail partners for their own stores. The purchase groups landed in 2 timeframes – preseason and in-season for Spring 2019, all at a daily cadence. To decrease noise, orders were combined at monthly intervals. Rule development used minimum support, confidence, and lift levels. With the many rules that were possible, interactive dashboard provided an avenue of exploration that allows users to see various product collections, rankings of rules by different metrics, and a tuning board for the algorithm.</p>
+</div>
+<div id="methods" class="section level2">
+<h2>METHODS</h2>
+<div id="data-collection-and-consolidation" class="section level3">
+<h3>Data Collection and Consolidation</h3>
+<p>The data was retrieved using the internal Business Warehouse, an add-on purchased by WWW to support the day to day SAP business tasks. The data comes in two main parts:</p>
+<ol style="list-style-type: decimal">
+<li><p>Preseason orders. This represents everything on order the day before shipments begin. This represents wholesale buyer’s anticipation of popular products.</p></li>
+<li><p>Inseason orders. This accounts for reactions to the business while the product sits on the shelf.
+The BW interface is built into Excel and yields spreadsheet outputs. The data sets were read into R using the readxl package, a member of the tidyverse.
+The data needed to be grouped into largest buckets to handle a 2 main sources of noise:</p></li>
+<li>Wholesale buying is a major business function with full corporate hierarchies and specializations. In soft goods, it is common for an individual to handle purchasing for women or men product only, overstating the association between products handled by a single buyer.</li>
+<li><p>With the many moving parts of purchasing, mistakes are made and often need to get corrected. Over 3 days, items can show up as ordered, get adjusted away, and then added on at a new price. Grouping by month smooths these processes out.</p></li>
+</ol>
+<p>Basket Analysis needs a unique ID to differentiate items purchased together. Because we combined items at a month level, we could not use the system generated order number. To compensate, a key was generated using the customer number, sales territory key, and month represented numerically. Dollars and units were left out of the analysis. The cleaned table consisted of two columns – the unique ID and the product Stock Keeping Unit, or SKU. The table was written to a local .CSV file.</p>
+</div>
+<div id="association-mining" class="section level3">
+<h3>Association Mining</h3>
+<p>This step used the <code>arules</code> package initially written in 2011 [3]. It uses a C implementation of the main apriori and eclat algorithms. The written .CSV file was read back in using the <code>arules::read.transactions</code> function. With the data being in the 2 column form with unique cart ID and product Stock Keeping Unit (SKU) code, the format needed to be set at “single”.</p>
+<pre class="r"><code>transactions &lt;- arules::read.transactions(&quot;orders.csv&quot;,
+                                          format = &quot;single&quot;,
+                                          sep = &quot;,&quot;,
+                                          header = TRUE,
+                                          cols = c(1, 2),
+                                          quote = &quot;&quot;)</code></pre>
+<p>The transaction object <code>transactions</code> is then fed into the <code>apriori</code> function, which takes parameters for support, confidence, and the max length of rule antecedents.</p>
+<pre class="r"><code>order_rules &lt;- arules::apriori(transactions, 
+                               parameter = list(supp=0.01, 
+                                                conf=0.8,
+                                                maxlen=5))</code></pre>
+<p>Support and Confidence are the backbone of the mining process and they consist of probability formulas [2]. Support represents the ratio of transactions that contain an item set to the total transactions. So, with an item set X in a data set of N transactions,</p>
+<p><img src="/post/2019-06-103-network/support_x.png" /></p>
+<p>With an association rule A -&gt; B,</p>
+<p><img src="/post/2019-06-103-network/support_ab.png" /></p>
+<p>Confidence represents the ratio between transactions that contain an item set to transactions that contain only 1 of the items. Said in probability terms, given item A is in your cart, what is the probability of purchasing item B?</p>
+<p><img src="/post/2019-06-103-network/confidence.png" /></p>
+<p>Generating association rules can be computationally expensive because it is a full look of a database. A rule is generated for each item set, which can become a combinatorial nightmare [1]. To prune the number of rules presented, minimum support and confidence levels are set. To further decrease the number of total calculations, the apriori algorithm is used. It states that any subset of a frequent itemset must also be frequent. Said another way, if an itemset is found to be infrequent, meaning it fails the minimum support or confidence levels provided, no set consisting of that item will be tested [2].</p>
+<p><img src="/post/2019-06-103-network/apriori.png" /></p>
+<p>In the above image, item set AB was found to be infrequent. This leads to every upstream item set containing A and B – ABC, ABD, ABCD - to be excluded from the analysis.
+After selecting for top rules based on either support, confidence or lift, the resulting graph is converted into an <code>igraph</code> object and passed to the <code>VisNetwork</code> package.</p>
+<pre class="r"><code># Take top rules by support
+top_rules &lt;- head(order_rules, n = 15, by = &quot;support&quot;) 
+
+#  Create graph object
+top_plot &lt;- plot(top_rules, method=&quot;graph&quot;, control=list(type=&quot;items&quot;))
+
+# Set as igraph object
+ig_df &lt;- igraph::get.data.frame(top_plot, what = &quot;both&quot;)
+
+visNetwork(
+  nodes = data.frame(
+    id = ig_df$vertices$name,
+    value = ig_df$vertices$confidence, # could change to lift or confidence
+    title = if_else(ig_df$vertices$label == &quot;&quot;,ig_df$vertices$name, ig_df$vertices$label),
+    color.background = if_else(ig_df$vertices$label == &quot;&quot;, &quot;red&quot;, &quot;lightblue&quot;),
+    shape = if_else(ig_df$vertices$label == &quot;&quot;, &quot;diamond&quot;, &quot;dot&quot;),
+    ig_df$vertices), 
+  edges = ig_df$edges) %&gt;%
+  visEdges( arrows = &quot;to&quot; ) %&gt;%
+  visOptions( highlightNearest = T )</code></pre>
+<p>Various attributes of the graph are set up in this step including labels, node shapes, images, and graph options. In addition to our product SKUs, the association rules are represented as nodes. This assists in handling relationships where multiple products make a set that indicate another item.</p>
+<p><img src="/post/2019-06-103-network/graph.png" /></p>
+<p>In the above graph, we see our product nodes represented as the shoe image with the association rule shown as an orange diamond.</p>
+</div>
+</div>
+<div id="results" class="section level2">
+<h2>RESULTS</h2>
+<p>The resulting Shiny app offers an ability to explore the rules, instead of seeing them all printed in a table or showing up as a bowl of spaghetti on the screen. Touching on Schneiderman’s mantra, the user can see the full graph, zoom in on specific portions, and find specific data by clicking on the nodes.
+The user is also able to generate new graphs using various levels that control the number of associations to show and how they are ranked, categories of product, and parameters to tune.</p>
+<p>An interesting outcome was discovered with respect to the style ZCloud X in Askew Angora. It is ranked 7th overall in terms of revenue, but is consistently in the middle of this network graph. Though not the strongest monetary performer, this style still consistently appears in shopping carts and can support most of the core functions at the brand. Sales can push this as a crowd pleaser – the type of style that will be seen in almost any store. Our partners would not want to miss the boat on this. Marketing can place the style in more content. If we know it’s typically in a cart, images &amp; videos can be more relevant. Product can investigate and see what these associated styles have in common. Why is this particular assortment resonating with our buyers?</p>
+<div id="next-steps" class="section level3">
+<h3>NEXT STEPS</h3>
+<p>We hope to find gather more data points as the season progresses. Because of the constant turn over of product colors (linked to SKU) each year, it is difficult to follow styles over multiple seasons. A solution is to report on silhouettes, which more-or-less stays constant through the years.</p>
+</div>
+<div id="references" class="section level3">
+<h3>REFERENCES</h3>
+<ol style="list-style-type: decimal">
+<li><p>“Market Basket Analysis.” Data Mining: Market Basket Analysis, www.albionresearch.com/data_mining/market_basket.php.</p></li>
+<li><p>Jabeen, Hafsa. “Market Basket Analysis Using R.” DataCamp Community, DataCamp, 21 Aug. 2018, www.datacamp.com/community/tutorials/market-basket-analysis-r.</p></li>
+<li><p>Michael Hahsler, Christian Buchta, Bettina Gruen and Kurt Hornik (2019). arules: Mining Association Rules and Frequent Itemsets. R package version 1.6-3. <a href="https://CRAN.R-project.org/package=arules" class="uri">https://CRAN.R-project.org/package=arules</a></p></li>
+</ol>
+</div>
+</div>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/network-graph/">network graph</a>, 
+            
+                <a href="/tags/basket-analysis/">basket analysis</a>, 
+            
+                <a href="/tags/shiny/">shiny</a>, 
+            
+                <a href="/tags/visnetwork/">visnetwork</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Network%20Visualization%20in%20R&url=https%3a%2f%2fjul-carras.github.io%2f2019%2f06%2f03%2fnetwork_basket%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Network%20Visualization%20in%20R&url=https%3a%2f%2fjul-carras.github.io%2f2019%2f06%2f03%2fnetwork_basket%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Julian Carrasquillo" href="https://jul-carras.github.io/">Julian Carrasquillo</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://jul-carras.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://jul-carras.github.io/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="https://jul-carras.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

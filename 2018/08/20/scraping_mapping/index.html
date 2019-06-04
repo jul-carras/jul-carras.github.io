@@ -8,7 +8,7 @@
 With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.45.1" />
+        <meta name="generator" content="Hugo 0.55.6" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Web Scraping and Mapping">
@@ -24,7 +24,7 @@ With guidance from this post by Saurav Kaushik, I used the Selector Gadget tool,
     </head>
     <body>
         
-<script>
+<script type="application/javascript">
 var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
 var doNotTrack = (dnt == "1" || dnt == "yes");
 if (!doNotTrack) {
@@ -110,7 +110,10 @@ if (!doNotTrack) {
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <p>Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.</p>
+    
+
+
+<p>Web scraping is a fun way to build data sets for analyses. Mapping is a great way to get an almost-literal 30 thousand mile view of a market, setting the stage for exploring potential opportunities. For a recent assignment, I built a map showing Dillard’s department stores along with the locations of 2 other retailers we’re associated with.</p>
 <p>With guidance from <a href="https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/">this post by Saurav Kaushik</a>, I used the Selector Gadget tool, which is a Chrome add-on that extracts out XPath and CSS selectors directly on a website. This allows us to target specifically tagged fields on a webpage for the scraper within the <code>rvest</code> package. You can download Selector Gadget and see a quick video on how it works <a href="https://selectorgadget.com/">here</a>. In a nutshell - you click an element of a website and the selector guesses the tag, along with everything else that matches that tag. You correct it by unclicking any elements you are not interested in and the selector will find a new tag that associates what is left over. You continue this process until you’re left with the fields of interest.</p>
 <p><br><br></p>
 <div id="packages" class="section level2">
@@ -142,22 +145,22 @@ dillards &lt;- data.frame(&quot;address&quot; = dillards)
 
 # See first 15 entries
 head(dillards, n = 15)</code></pre>
-<pre><code>##                                                 address
-## 1         1627 Opelika Rd Suite 16Auburn, Alabama 36830
-## 2           3000 Eastdale MallMontgomery, Alabama 36117
-## 3         900 Commons Dr Suite 100Dothan, Alabama 36303
-## 4    301 Coxcreek Pkwy Ste #1100Florence, Alabama 35630
-## 5     2801 Memorial Parkway SwHuntsville, Alabama 35801
-## 6                3300 Bel Air MallMobile, Alabama 36606
-## 7   10101 Eastern Shore BlvdSpanish Fort, Alabama 36527
-## 8       7310 Eastchase ParkwayMontgomery, Alabama 36117
-## 9                  700 Quintard DrOxford, Alabama 36203
-## 10            1435 West Southern AveMesa, Arizona 85202
-## 11       10002 Metro Parkway EastPhoenix, Arizona 85051
-## 12      1117 N. Promenade PkyCasa Grande, Arizona 85194
-## 13     4700 Us Highway 89 NorthFlagstaff, Arizona 86004
-## 14     1461 South Yuma Palms ParkwayYuma, Arizona 85365
-## 15 5501 Highway 95 NorthLake Havasu City, Arizona 86404</code></pre>
+<pre><code>##                                                  address
+## 1            3000 Eastdale MallMontgomery, Alabama 36117
+## 2                 3300 Bel Air MallMobile, Alabama 36606
+## 3    10101 Eastern Shore BlvdSpanish Fort, Alabama 36527
+## 4          1627 Opelika Rd Suite 16Auburn, Alabama 36830
+## 5          900 Commons Dr Suite 100Dothan, Alabama 36303
+## 6     301 Coxcreek Pkwy Ste #1100Florence, Alabama 35630
+## 7      2801 Memorial Parkway SwHuntsville, Alabama 35801
+## 8        7310 Eastchase ParkwayMontgomery, Alabama 36117
+## 9                   700 Quintard DrOxford, Alabama 36203
+## 10             1435 West Southern AveMesa, Arizona 85202
+## 11        10002 Metro Parkway EastPhoenix, Arizona 85051
+## 12        3101 West Chandler BlvdChandler, Arizona 85226
+## 13     2151 S. San Tan Village PkyGilbert, Arizona 85296
+## 14 7800 W. Arrowhead Towne CenterGlendale, Arizona 85308
+## 15               6545 E. Southern AveMesa, Arizona 85206</code></pre>
 <p><br><br></p>
 </div>
 <div id="combining-with-other-data" class="section level2">
@@ -182,22 +185,22 @@ all_stores &lt;- bind_rows(&quot;Dillard&#39;s&quot; = dillards,
                         .id = &quot;retailer&quot;)
 
 head(all_stores, n = 15)</code></pre>
-<pre><code>##     retailer                                              address
-## 1  Dillard&#39;s        1627 Opelika Rd Suite 16Auburn, Alabama 36830
-## 2  Dillard&#39;s          3000 Eastdale MallMontgomery, Alabama 36117
-## 3  Dillard&#39;s        900 Commons Dr Suite 100Dothan, Alabama 36303
-## 4  Dillard&#39;s   301 Coxcreek Pkwy Ste #1100Florence, Alabama 35630
-## 5  Dillard&#39;s    2801 Memorial Parkway SwHuntsville, Alabama 35801
-## 6  Dillard&#39;s               3300 Bel Air MallMobile, Alabama 36606
-## 7  Dillard&#39;s  10101 Eastern Shore BlvdSpanish Fort, Alabama 36527
-## 8  Dillard&#39;s      7310 Eastchase ParkwayMontgomery, Alabama 36117
-## 9  Dillard&#39;s                 700 Quintard DrOxford, Alabama 36203
-## 10 Dillard&#39;s            1435 West Southern AveMesa, Arizona 85202
-## 11 Dillard&#39;s       10002 Metro Parkway EastPhoenix, Arizona 85051
-## 12 Dillard&#39;s      1117 N. Promenade PkyCasa Grande, Arizona 85194
-## 13 Dillard&#39;s     4700 Us Highway 89 NorthFlagstaff, Arizona 86004
-## 14 Dillard&#39;s     1461 South Yuma Palms ParkwayYuma, Arizona 85365
-## 15 Dillard&#39;s 5501 Highway 95 NorthLake Havasu City, Arizona 86404</code></pre>
+<pre><code>##     retailer                                               address
+## 1  Dillard&#39;s           3000 Eastdale MallMontgomery, Alabama 36117
+## 2  Dillard&#39;s                3300 Bel Air MallMobile, Alabama 36606
+## 3  Dillard&#39;s   10101 Eastern Shore BlvdSpanish Fort, Alabama 36527
+## 4  Dillard&#39;s         1627 Opelika Rd Suite 16Auburn, Alabama 36830
+## 5  Dillard&#39;s         900 Commons Dr Suite 100Dothan, Alabama 36303
+## 6  Dillard&#39;s    301 Coxcreek Pkwy Ste #1100Florence, Alabama 35630
+## 7  Dillard&#39;s     2801 Memorial Parkway SwHuntsville, Alabama 35801
+## 8  Dillard&#39;s       7310 Eastchase ParkwayMontgomery, Alabama 36117
+## 9  Dillard&#39;s                  700 Quintard DrOxford, Alabama 36203
+## 10 Dillard&#39;s             1435 West Southern AveMesa, Arizona 85202
+## 11 Dillard&#39;s        10002 Metro Parkway EastPhoenix, Arizona 85051
+## 12 Dillard&#39;s        3101 West Chandler BlvdChandler, Arizona 85226
+## 13 Dillard&#39;s     2151 S. San Tan Village PkyGilbert, Arizona 85296
+## 14 Dillard&#39;s 7800 W. Arrowhead Towne CenterGlendale, Arizona 85308
+## 15 Dillard&#39;s               6545 E. Southern AveMesa, Arizona 85206</code></pre>
 <p><br><br></p>
 </div>
 <div id="mapping-our-store-locations" class="section level2">

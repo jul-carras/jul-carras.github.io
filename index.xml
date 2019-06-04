@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>My Name</copyright>
-    <lastBuildDate>Sat, 19 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jul-carras.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Network Visualization in R</title>
+      <link>https://jul-carras.github.io/2019/06/03/network_basket/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/2019/06/03/network_basket/</guid>
+      <description>It’s been some time since the last post! Classes picked up and we’re in the prime selling season at office, so I let the blog simmer. The below is the write up for one of my courses this past semester - Information Visualization. Images come from the awesome article by Hafsa Jabeen on basket analysis. You can find the associated shiny app here. Setting this up is deserving of its own write up, so I’ll get to it another time.</description>
+    </item>
     
     <item>
       <title>Distances Between ggmap Coordinates using gmapdistance</title>
@@ -78,7 +87,7 @@ This site was made using Yihui Xie’s Blogdown package. The documentation suppo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jul-carras.github.io/page/resume/</guid>
-      <description>PDF Download</description>
+      <description>PDF Download</description>
     </item>
     
   </channel>

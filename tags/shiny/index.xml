@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shiny on Julian Carrasquillo</title>
+    <link>https://jul-carras.github.io/tags/shiny/</link>
+    <description>Recent content in shiny on Julian Carrasquillo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>My Name</copyright>
+    <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jul-carras.github.io/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Network Visualization in R</title>
+      <link>https://jul-carras.github.io/2019/06/03/network_basket/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jul-carras.github.io/2019/06/03/network_basket/</guid>
+      <description>It’s been some time since the last post! Classes picked up and we’re in the prime selling season at office, so I let the blog simmer. The below is the write up for one of my courses this past semester - Information Visualization. Images come from the awesome article by Hafsa Jabeen on basket analysis. You can find the associated shiny app here. Setting this up is deserving of its own write up, so I’ll get to it another time.</description>
+    </item>
+    
+  </channel>
+</rss>
