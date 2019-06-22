@@ -143,10 +143,10 @@ set.api.key(google_api_key)</code></pre>
               destination = &quot;battery+park&quot;,
               mode = &quot;driving&quot;)</code></pre>
 <pre><code>## $Time
-## [1] 1773
+## [1] 1882
 ## 
 ## $Distance
-## [1] 22965
+## [1] 20896
 ## 
 ## $Status
 ## [1] &quot;OK&quot;</code></pre>
@@ -192,21 +192,21 @@ vector_inputs$Time %&gt;% kable()</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">inwood+manhattan</td>
-<td align="right">1749</td>
-<td align="right">41900</td>
-<td align="right">14183</td>
+<td align="right">1882</td>
+<td align="right">42383</td>
+<td align="right">14337</td>
 </tr>
 <tr class="even">
 <td align="left">grand+rapids+mi</td>
-<td align="right">40708</td>
-<td align="right">2328</td>
-<td align="right">35551</td>
+<td align="right">40724</td>
+<td align="right">2336</td>
+<td align="right">35732</td>
 </tr>
 <tr class="odd">
 <td align="left">washington+memorial</td>
-<td align="right">13862</td>
-<td align="right">36844</td>
-<td align="right">309</td>
+<td align="right">13608</td>
+<td align="right">36996</td>
+<td align="right">310</td>
 </tr>
 </tbody>
 </table>
@@ -219,7 +219,7 @@ vector_inputs$Time %&gt;% kable()</code></pre>
                            destination = destinations,
                            mode = &quot;driving&quot;)})</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.23    0.02    7.74</code></pre>
+##    0.28    0.00   10.72</code></pre>
 <p>Run time hovers around 10 - 12 seconds. From my experience, a retrieval will be timed at about 1 second a piece. It’s important to hone in on your interested list before running any vectors of locations. There is a <code>combinations</code> argument that will compute either all combinations (“all”) or just corresponding entries (“pairwise”). This is useful if you’ve got specific pairs of locations you want to investigate.</p>
 </div>
 <div id="other-arguments-for-tuning" class="section level2">
@@ -337,15 +337,15 @@ get_distances &lt;- function(..state, group_1, group_2){
   gather(destination, time, -or) %&gt;%
   mutate(time_minutes = round(time / 60.0, digits = 0)) </code></pre>
 <pre><code>##                    or          destination  time time_minutes
-## 1    inwood+manhattan Time.battery+park+ny  1749           29
-## 2     grand+rapids+mi Time.battery+park+ny 40708          678
-## 3 washington+memorial Time.battery+park+ny 13862          231
-## 4    inwood+manhattan      Time.holland+mi 41900          698
-## 5     grand+rapids+mi      Time.holland+mi  2328           39
-## 6 washington+memorial      Time.holland+mi 36844          614
-## 7    inwood+manhattan  Time.white+house+dc 14183          236
-## 8     grand+rapids+mi  Time.white+house+dc 35551          593
-## 9 washington+memorial  Time.white+house+dc   309            5</code></pre>
+## 1    inwood+manhattan Time.battery+park+ny  1882           31
+## 2     grand+rapids+mi Time.battery+park+ny 40724          679
+## 3 washington+memorial Time.battery+park+ny 13608          227
+## 4    inwood+manhattan      Time.holland+mi 42383          706
+## 5     grand+rapids+mi      Time.holland+mi  2336           39
+## 6 washington+memorial      Time.holland+mi 36996          617
+## 7    inwood+manhattan  Time.white+house+dc 14337          239
+## 8     grand+rapids+mi  Time.white+house+dc 35732          596
+## 9 washington+memorial  Time.white+house+dc   310            5</code></pre>
 <p>Using various time thresholds, I was able to grade each individual Dillard’s location by how many Outdoor Specialty stores were within that many minutes of driving.</p>
 </div>
 <div id="final-map" class="section level1">
